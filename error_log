@@ -1,0 +1,4 @@
+[09-Nov-2018 20:14:34 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Home::index() in /home/madz5183/public_html/application/controllers/Home.php on line 47
+[09-Nov-2018 20:14:47 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Home::index() in /home/madz5183/public_html/application/controllers/Home.php on line 47
+[09-Nov-2018 21:50:01 Asia/Jakarta] PHP Fatal error:  Call to undefined function base_url() in /home/madz5183/public_html/application/views/_template/header.php on line 17
+[09-Nov-2018 21:50:06 Asia/Jakarta] PHP Fatal error:  Call to undefined function base_url() in /home/madz5183/public_html/application/views/_template/header.php on line 17
