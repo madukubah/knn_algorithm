@@ -108,12 +108,12 @@ class User extends CI_Controller {
             );
             return ;
         }else{
-            $message = "registrasi gagal";
+            // $message = "registrasi gagal";
             echo json_encode(
                 array( 
                     "status" => 0,
                     "data" => array(),
-                    "message" => $message,
+                    "message" => $result['message'],
                     )
             );
             return ;

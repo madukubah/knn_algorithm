@@ -55,20 +55,20 @@ class Item extends Admin_Controller {
         //                 'required' => 'Langitude harus di isi',
         //         ),
         // ),
-        array(
-                'field' => 'item_ages',
-                'rules' =>  'trim|required',
-                'errors' => array(
-                        'required' => 'Umur harus di isi'
-                ),
-        ),
-        array(
-                'field' => 'item_weight',
-                'rules' =>  'trim|required',
-                'errors' => array(
-                        'required' => 'Berat harus di isi'
-                ),
-        ),
+        // array(
+        //         'field' => 'item_ages',
+        //         'rules' =>  'trim|required',
+        //         'errors' => array(
+        //                 'required' => 'Umur harus di isi'
+        //         ),
+        // ),
+        // array(
+        //         'field' => 'item_weight',
+        //         'rules' =>  'trim|required',
+        //         'errors' => array(
+        //                 'required' => 'Berat harus di isi'
+        //         ),
+        // ),
         
      );
      $this->form_validation->set_rules($config);   
@@ -78,7 +78,7 @@ class Item extends Admin_Controller {
         if( empty($this->input->post('store_id')) ){
         $this->session->set_flashdata('info', array(
                 'from' => 0,
-                'message' =>  'isi Peternakan terlebih dahulu!!'
+                'message' =>  'isi Toko terlebih dahulu!!'
         ));
                 redirect(site_url('/item'));
                 return;
@@ -87,8 +87,6 @@ class Item extends Admin_Controller {
         $data_item['item_name'] =$this->input->post('item_name');
         $data_item['item_price'] = $this->input->post('item_price');
         $data_item['item_description'] = $this->input->post('item_description');
-        $data_item['item_ages'] = $this->input->post('item_ages');
-        $data_item['item_weight'] = $this->input->post('item_weight');
 
 
         $data_item['category_id'] = $this->input->post('category_id');
@@ -100,7 +98,7 @@ class Item extends Admin_Controller {
         for( $i = 0 ; $i < count( $_FILES['document_file']['name'] ) ; $i++ )
           {
               $name0 =  $_FILES['document_file']['name'][ $i ];
-              $name= time()."-ternak-".$i."-".substr($name0, strpos($name0, '.') );
+              $name= time()."-item-".$i."-".substr($name0, strpos($name0, '.') );
               $size= $_FILES['document_file']['size'][ $i ];
               $type= $_FILES['document_file']['type'][ $i ];
               $type= strtolower(substr($type, 0, strpos($type, '/')));
@@ -156,7 +154,7 @@ class Item extends Admin_Controller {
                    'field' => 'item_name',
                     'rules' =>  'trim|required',
                     'errors' => array(
-                            'required' => 'Nama ternak harus di isi'
+                            'required' => 'Nama harus di isi'
                     ),
             ),
             array(
@@ -173,20 +171,20 @@ class Item extends Admin_Controller {
                             'required' => 'Keterangan harus di isi',
                     ),
             ),
-            array(
-                    'field' => 'item_ages',
-                    'rules' =>  'trim|required',
-                    'errors' => array(
-                            'required' => 'Umur harus di isi'
-                    ),
-            ),
-            array(
-                    'field' => 'item_weight',
-                    'rules' =>  'trim|required',
-                    'errors' => array(
-                            'required' => 'Berat harus di isi'
-                    ),
-            ),
+        //     array(
+        //             'field' => 'item_ages',
+        //             'rules' =>  'trim|required',
+        //             'errors' => array(
+        //                     'required' => 'Umur harus di isi'
+        //             ),
+        //     ),
+        //     array(
+        //             'field' => 'item_weight',
+        //             'rules' =>  'trim|required',
+        //             'errors' => array(
+        //                     'required' => 'Berat harus di isi'
+        //             ),
+        //     ),
             
          );
          $this->form_validation->set_rules($config);   
@@ -196,7 +194,7 @@ class Item extends Admin_Controller {
             if( empty($this->input->post('store_id')) ){
             $this->session->set_flashdata('info', array(
                     'from' => 0,
-                    'message' =>  'isi Peternakan terlebih dahulu!!'
+                    'message' =>  'isi Toko terlebih dahulu!!'
             ));
                     redirect(site_url('/item'));
                     return;
@@ -247,20 +245,20 @@ class Item extends Admin_Controller {
                       'message' =>  'Ternak berhasil diubah'
                     ));
                     // redirect(site_url('kost/detail_kost/').$this->input->post('kost_id') );
-                    redirect( site_url('home/detail_peternakan/').$this->input->post('store_id') );
+                    redirect( site_url('home/detail_store/').$this->input->post('store_id') );
                 }else{
                     $this->session->set_flashdata('info', array(
                       'from' => 0,
                       'message' =>  'terjadi kesalahan saat mengirim data'
                     ));
-                    redirect( site_url('home/detail_peternakan/').$this->input->post('store_id') );
+                    redirect( site_url('home/detail_store/').$this->input->post('store_id') );
                 }
          }else{
                 $this->session->set_flashdata('info', array(
                 'from' => 0,
                 'message' =>  'terjadi kesalahan saat mengirim data'
                 ));
-                redirect( site_url('home/detail_peternakan/').$this->input->post('store_id') );
+                redirect( site_url('home/detail_store/').$this->input->post('store_id') );
          }
       }
 
@@ -287,13 +285,13 @@ class Item extends Admin_Controller {
                         {
                         @unlink($location.$image);
                         }
-                        redirect( site_url('home/detail_peternakan/').$this->input->post('store_id') );
+                        redirect( site_url('home/detail_store/').$this->input->post('store_id') );
                 }else{
                         $this->session->set_flashdata('info', array(
                         'from' => 0,
                         'message' =>  'terjadi kesalahan saat menghapus data'
                         ));
-                        redirect( site_url('home/detail_peternakan/').$this->input->post('store_id') );
+                        redirect( site_url('home/detail_store/').$this->input->post('store_id') );
                 }
         }
 }

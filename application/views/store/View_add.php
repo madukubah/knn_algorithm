@@ -117,10 +117,10 @@
                                         <div class="row  ">
                                             <div class="col-xs-6 ">
                                                 <!--  -->
-                                                <label for="">Nama Peternakan</label>
+                                                <label for="">Nama Toko</label>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input id="" type="text" class="form-control" placeholder="Nama Peternakan" name="store_name" value="<?php echo set_value('store_name'); ?>"/>
+                                                        <input id="" type="text" class="form-control" placeholder="Nama Toko" name="store_name" value="<?php echo set_value('store_name'); ?>"/>
                                                     </span>
                                                 </label>
                                                 <span style="color:red"><?php echo form_error('store_name'); ?></span>

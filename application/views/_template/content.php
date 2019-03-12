@@ -120,7 +120,7 @@
                         <thead class="thin-border-bottom">
                           <tr >
                             <th style="width:50px">No</th>
-                            <th>Nama Peternakan</th>
+                            <th>Nama </th>
                             <th>Alamat</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -145,8 +145,8 @@
                                     <?php echo  $file->store_description ?>
                                 </td>
                                 <td>
-                                  <a href="<?php echo site_url('home/detail_peternakan')."/".$file->store_id  ?>" class="btn btn-white btn-info btn-bold btn-xs">
-                                      Detail Peternakan
+                                  <a href="<?php echo site_url('home/detail_store')."/".$file->store_id  ?>" class="btn btn-white btn-info btn-bold btn-xs">
+                                      Detail 
                                   </a>
                                  <button class="btn btn-white btn-info btn-bold btn-xs" data-toggle="modal" data-target="#editModalDocument<?php echo $file->store_id ;?>">
                                       <i class="ace-icon fa fa-edit bigger-120 blue"></i>
@@ -164,17 +164,17 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title"><b>#Edit Peternakan</b></h4>
+                                        <h4 class="modal-title"><b>#Edit </b></h4>
                                     </div>
                                     <div class="modal-body">
-                                    <?php echo form_open_multipart( "peternakan/edit_peternakan" ) ;?>
+                                    <?php echo form_open_multipart( "store/edit_store" ) ;?>
                                     <div class="box-body">
                                         <div class="form-group">
                                             <input id="" type="text" name="store_id" value="<?php echo $file->store_id ?>"  hidden readonly />
                                            <input id="" type="text" name="store_old_images" value="<?php echo $file->store_images ?>"  hidden readonly />
                                        </div>
                                         <div class="form-group">
-                                            <label>Nama Peternakan</label>
+                                            <label>Nama </label>
                                            <color class="text-red"> *</color>
                                             <input type="text" class="form-control" value='<?php echo $file->store_name; ?>' name="store_name" required="required" >
                                         </div>
@@ -223,10 +223,10 @@
                               <div class="modal-dialog">
                               <!-- Modal content-->
                                   <div class="modal-content">
-                                      <?php echo form_open("peternakan/delete_peternakan");?>
+                                      <?php echo form_open("store/delete_store");?>
                                       <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                      <h4 class="modal-title">#Hapus Peternakan</h4>
+                                      <h4 class="modal-title">#Hapus </h4>
                                       </div>
                                       <div class="modal-body">
                                       <div class="alert alert-danger">Anda yakin menghapus  <b><?php echo $file->store_name ?></b>" ?</div>

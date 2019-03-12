@@ -99,7 +99,7 @@
                             <div class="widget-header widget-header-small">
                                 <h6 class="widget-title">
                                     <i class="ace-icon fa fa-sort"></i>
-                                    Add Kamar
+                                    Add Item
                                 </h6>
                                 <div class="widget-toolbar">
                                     <a href="#" data-action="reload">
@@ -189,29 +189,21 @@
                                                 <span style="color:red"><?php echo form_error('item_price'); ?></span>
                                                 <!--  -->
                                                 <!--  -->
-                                                <label for="">Umur (Tahun)</label>
+                                                <label for="">Keterangan</label>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input id="" type="number" class="form-control" placeholder="Umur" name="item_ages" value="<?php echo set_value('item_ages'); ?>"/>
-                                                   </span>
-                                                </label>
-                                                <span style="color:red"><?php echo form_error('item_ages'); ?></span>
-                                                <!--  -->
-                                                 <!--  -->
-                                                <label for="">Berat (kg)</label>
-                                               <label class="block clearfix">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <input id="" type="number" class="form-control" placeholder="Berat" name="item_weight" value="<?php echo set_value('item_weight'); ?>"/>
+                                                        <textarea type="text" class="form-control" placeholder="Keterangan" name="item_description"/><?php echo set_value('item_description'); ?></textarea>
+                                                        <!-- <i class="ace-icon fa fa-user"></i> -->
                                                     </span>
                                                 </label>
-                                                <span style="color:red"><?php echo form_error('item_weight'); ?></span>
-                                                <!--  -->
+                                                <span style="color:red"><?php echo form_error('item_description'); ?></span>
+                                               <!--  -->    
                                            </div>
                                             <div class="col-xs-6 ">
                                                <!--  -->
                                                  <label class="block clearfix ">
                                                     <span class="block input-icon input-icon-right" >
-                                                    <label for="">Asal Peternakan</label><br>
+                                                    <label for="">Asal Toko</label><br>
                                                         <select class="form-control" name="store_id" >
                                                                 <?php foreach( $stores as $store ) : ?>
                                                                 <option value="<?php echo $store->store_id ?>"> <?php echo $store->store_name ?> </option>
@@ -221,7 +213,7 @@
                                                 </label>
                                                 <!--  -->
                                                 <!--  -->
-                                                <label for="">Nama </label>
+                                                <label for="">Nama Item</label>
                                                <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input id="" type="text" class="form-control" placeholder="Nama" name="item_name" value="<?php echo set_value('item_name'); ?>"/>
@@ -229,16 +221,6 @@
                                                 </label>
                                                 <span style="color:red"><?php echo form_error('item_name'); ?></span>
                                                 <!--  -->
-                                                <!--  -->
-                                                <label for="">Keterangan</label>
-                                                <label class="block clearfix">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <textarea type="text" class="form-control" placeholder="Keterangan" name="item_description"/><?php echo set_value('item_description'); ?></textarea>
-                                                        <!-- <i class="ace-icon fa fa-user"></i> -->
-                                                    </span>
-                                                </label>
-                                                <span style="color:red"><?php echo form_error('item_description'); ?></span>
-                                               <!--  -->
                                                 <!--  -->
                                                 <label for="">Foto</label>
                                                 <label class="block clearfix">

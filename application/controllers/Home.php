@@ -37,18 +37,18 @@ class Home extends Admin_Controller {
   }
 
   //   DETAIL
-  public function detail_peternakan( $store_id  )
+  public function detail_store( $store_id  )
   {
           $data['files'] = $this->m_store_item->read_by_store_id( $store_id );
           $data[ "kosts" ] =array();// $this->m_kost->getData( $this->session->userdata('user_id') );
           $data[ "store_info" ] = $this->m_store->read_by_store_id( $store_id );
           $data[ "facilities" ] = array();//$this->m_kost->get_facility(  );
 
-          $data['page_title'] = "Detail Peternakan";
+          $data['page_title'] = "Detail ";
           $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') )[0];
           $this->load->view("_template/header");
           $this->load->view("_template/sidebar_menu");
-              $this->load->view("peternakan/View_detail_peternakan",$data);
+              $this->load->view("store/View_detail",$data);
           $this->load->view("_template/footer");
   }
 }

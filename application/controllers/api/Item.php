@@ -37,7 +37,7 @@ class Item extends CI_Controller {
         )  );
     }
 
-    public function search( $query = " " )
+    public function search( $query = "" )
     {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
@@ -45,7 +45,7 @@ class Item extends CI_Controller {
 
         $query = str_ireplace( "%20", " ", $query );
 
-        $start = $this->input->get('start', TRUE);
+        $start = $this->input->get('start', false);
         if( $start == null )
               $start = 0;
 

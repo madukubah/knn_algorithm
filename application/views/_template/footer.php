@@ -2,7 +2,7 @@
   <div class="footer-inner">
     <div class="footer-content">
       <span class="bigger-120">
-      <span class="red bolder">Techno's Studio</span>
+      <span class="red bolder">Madukubah </span>
        Application &copy; 2018 
       </span>
       &nbsp; &nbsp;

@@ -10,15 +10,15 @@
     ),
 
     array(
-      'menuId' => "peternakan",
-      'menuName' => "Tambah Peternakan",
-      'menuPath' => site_url("peternakan"),
+      'menuId' => "store",
+      'menuName' => "Tambah Toko",
+      'menuPath' => site_url("store"),
       'menuIcon' => 'fa fa-plus'
     ),
 
     array(
       'menuId' => "item",
-      'menuName' => "Tambah Ternak",
+      'menuName' => "Tambah Item",
       'menuPath' => site_url("item"),
       'menuIcon' => 'fa fa-plus'
     )

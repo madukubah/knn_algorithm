@@ -109,7 +109,7 @@
            <?php if( !empty($store_info) ): ?>
           <div class="row">
             <div class="col-xs-6"> 
-              <h2> Kost : <?php echo $store_info[0]->store_name ?> </h2>
+              <h2><?php echo $store_info[0]->store_name ?> </h2>
               <h4> Alamat : <?php echo $store_info[0]->store_address ?> </h4>
               <h4> <?php echo $store_info[0]->store_description ?> </h4>
            </div>
@@ -128,7 +128,7 @@
                 <div class="widget-header widget-header-small">
                   <h6 class="widget-title">
                     <i class="ace-icon fa fa-sort"></i>
-                    Kamar
+                    Item
                   </h6>
                   <div class="widget-toolbar">
                    <a href="#" data-action="reload">
@@ -147,7 +147,6 @@
                           <tr >
                             <th style="width:50px">No</th>
                             <th>Nama</th>
-                            <th>Berat / Umur</th>
                             <th>Harga </th>
                             <th>Foto</th>
                             <th style="width: 20%" >deskripsi</th>
@@ -165,9 +164,6 @@
                                 </td>
                                 <td>
                                     <?php echo $file->item_name ?>
-                                </td>
-                                <td>
-                                    <?php echo $file->item_weight." Kg/ ".$file->item_ages." Thn" ?>
                                 </td>
                                 <td>
                                     <?php echo  "Rp. ".$file->item_price ?>
@@ -258,28 +254,6 @@
                                               </label>
                                               <span style="color:red"><?php echo form_error('item_price'); ?></span>
                                               <!--  -->
-                                            </div>
-                                            <div class="form-group">
-                                              <!--  -->
-                                              <label for="">Umur (Tahun)</label>
-                                              <label class="block clearfix">
-                                                  <span class="block input-icon input-icon-right">
-                                                      <input id="" type="number" class="form-control" placeholder="Umur" name="item_ages" value="<?php echo $file->item_ages; ?>"/>
-                                                 </span>
-                                              </label>
-                                              <span style="color:red"><?php echo form_error('item_ages'); ?></span>
-                                              <!--  -->
-                                            </div>
-                                            <div class="form-group">
-                                              <!--  -->
-                                              <label for="">Berat (kg)</label>
-                                              <label class="block clearfix">
-                                                   <span class="block input-icon input-icon-right">
-                                                       <input id="" type="number" class="form-control" placeholder="Berat" name="item_weight" value="<?php echo $file->item_weight; ?>"/>
-                                                   </span>
-                                               </label>
-                                               <span style="color:red"><?php echo form_error('item_weight'); ?></span>
-                                               <!--  -->
                                             </div>
                                             <div class="form-group">
                                               <!--  -->

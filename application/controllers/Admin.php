@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends Admin_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model("m_admin");
@@ -45,134 +45,72 @@ class Admin extends CI_Controller {
 
 
   public function editUser(){
-
     $log['log_datetime'] = date("Y-m-d H:i:s");
-
     $log['log_message'] = "EDIT USER (".$this->input->post('user_username').") BY (".$this->input->post('category_name')."):  user => ".$this->session->userdata('user_username')."( id = ".$this->session->userdata('user_id').") ; result => ";
-
     $log['user_id'] = $this->session->userdata('user_id');
 
-
-    if( !empty( $this->input->post('user_password') ) )
-    {
-      $data_user['user_password'] = md5(  $this->input->post('user_password') );
-    }
-
+   if( !empty( $this->input->post('user_password') ) )
+   {
+     $data_user['user_password'] = md5(  $this->input->post('user_password') );
+   }
     $data_user['user_id'] = $this->input->post('user_id');
-
     $data_user['user_username'] = $this->input->post('user_username');
-
     $data_user['user_level'] = $this->input->post('user_level');
-
     $data_user['user_status'] = $this->input->post('user_status');
-
     $data_user_profile['user_profile_fullname'] = $this->input->post('user_profile_fullname');
-
     $data_user_profile['user_profile_phone'] = $this->input->post('user_profile_phone');
 
-
-
     $result = $this->m_admin->editUser( $data_user , $data_user_profile);
-
     // // // // // // echo var_dump($data);
-
     // // // // // echo var_dump($result);
-
     if( $result ){
-
       $this->session->set_flashdata('admin', array(
-
         'from' => 1,
-
         'message' =>  "Data user berhasil di Edit !!",
-
       ));
-
       $log['log_message'] .= "true";
-
       $this->m_log->inserLog( $log );
 
-
-
-      redirect(site_url('/admin'));
-
+     redirect(site_url('/admin'));
     }else{
-
       $this->session->set_flashdata('admin', array(
-
         'from' => 0,
-
         'message' =>  "terjadi kesalahan saat mengedit data",
-
       ));
-
       $log['log_message'] .= "false = "."terjadi kesalahan saat mengedit data";
-
       $this->m_log->inserLog( $log );
+     redirect(site_url('/admin'));
 
-      redirect(site_url('/admin'));
-
-    }
-
-
+   }
 
   }
-
-  public function deleteUser(){
-
+   public function deleteUser(){
     $log['log_datetime'] = date("Y-m-d H:i:s");
-
     $log['log_message'] = "DELETE USER (".$this->input->post('user_username').") BY (".$this->input->post('category_name')."):  user => ".$this->session->userdata('user_username')."( id = ".$this->session->userdata('user_id').") ; result => ";
-
     $log['user_id'] = $this->session->userdata('user_id');
 
-
-
-    $data_user['user_id'] = $this->input->post('user_id');
-
-    // $data['user_username'] = $this->input->post('user_username');
-
-    // // // // echo var_dump( $data );
-
+   $data_user['user_id'] = $this->input->post('user_id');
+    
     $result = $this->m_admin->deleteUser( $data_user );
-
-    // // // // echo $result;
-
     if( $result ){
+     $this->session->set_flashdata('admin', array(
+          'from' => 1,
+          'message' =>  "Data user berhasil di hapus !!",
+        ));
+        $log['log_message'] .= "true";
+        $this->m_log->inserLog( $log );
 
-      $this->session->set_flashdata('admin', array(
-
-        'from' => 1,
-
-        'message' =>  "Data user berhasil di hapus !!",
-
-      ));
-
-      $log['log_message'] .= "true";
-
-      $this->m_log->inserLog( $log );
-
-
-
-      redirect(site_url('/admin'));
-
+        redirect(site_url('/admin'));
     }else{
+        $this->session->set_flashdata('admin', array(
+          'from' => 0,
 
-      $this->session->set_flashdata('admin', array(
+          'message' =>  "terjadi kesalahan saat menghapus data",
 
-        'from' => 0,
-
-        'message' =>  "terjadi kesalahan saat menghapus data",
-
-      ));
-
+        ));
       $log['log_message'] .= "false = "."terjadi kesalahan saat menghapus data";
-
-      $this->m_log->inserLog( $log );
-
-
-
-      redirect(site_url('/admin'));
+        $this->m_log->inserLog( $log );
+        redirect(site_url('/admin'));
 
     }
 
@@ -325,21 +263,15 @@ class Admin extends CI_Controller {
   // ADVERTISEMENT
   public function add_Advertisement(  )
   {
-
     if( !empty( $_FILES['document_file']['name'] ) )
     {
       $name= $_FILES['document_file']['name'];
-
       $size= $_FILES['document_file']['size'];
-
       $type= $_FILES['document_file']['type'];
-
       if(!empty( $name ) && $size  < 16777216 ){
         $data_advertise['advertise_photo'] = date('Y-m-d-h-i-s').$name;
         $data_advertise['advertise_desc'] = $this->input->post('advertise_desc');
-
         $tmp_name = $_FILES['document_file']['tmp_name'];
-
         $location = './upload/iklan/';
 
         if(move_uploaded_file($tmp_name, $location.$data_advertise['advertise_photo']))
@@ -347,32 +279,22 @@ class Admin extends CI_Controller {
           if( $result = $this->m_admin->create_Advertisement( $data_advertise ) )
           {
             $this->session->set_flashdata('admin', array(
-
-              'from' => 1,
-    
-              'message' =>  "Data iklan berhasil ditambah !!",
-    
-            ));
-    
+              'from' => 1, 
+             'message' =>  "Data iklan berhasil ditambah !!",
+            ));   
             redirect(site_url('/admin'));
           }else{
             $this->session->set_flashdata('admin', array(
-
-              'from' => 0,
-      
+              'from' => 0,     
               'message' =>  "terjadi kesalahan saat menambah data !!",
-      
-            ));
-      
+            ));     
             redirect(site_url('/admin'));  
           }
         }else{
           $this->session->set_flashdata('admin', array(
-
-            'from' => 0,
-    
+            'from' => 0,   
             'message' =>  "terjadi kesalahan saat menambah data !!",
-    
+
           ));
     
           redirect(site_url('/admin'));
@@ -406,32 +328,23 @@ class Admin extends CI_Controller {
   public function edit_Advertisement(  )
   {
     if( !empty( $_FILES['document_file']['name'] ) )
-
     {
-
           // // @unlink($filename);
       $name= $_FILES['document_file']['name'];
-
       $size= $_FILES['document_file']['size'];
-
       $type= $_FILES['document_file']['type'];
-
       if(!empty( $name ) && $size  < 16777216 )
-      {
-        $data_advertise['advertise_photo'] = date('Y-m-d-h-i-s').$name;
-        $tmp_name = $_FILES['document_file']['tmp_name'];
-
+     {
+       $data_advertise['advertise_photo'] = date('Y-m-d-h-i-s').$name;
+       $tmp_name = $_FILES['document_file']['tmp_name'];
         $location = './upload/iklan/';
-        // echo var_dump( $data_advertise );
+         // echo var_dump( $data_advertise );
         // return ; 
         if(move_uploaded_file($tmp_name, $location.$data_advertise['advertise_photo']))
         {
           @unlink($location.$this->input->post('advertise_old_photo'));
         }
       }
-    }else{
-
-
     }
     $data_advertise["advertise_id"] = $this->input->post('advertise_id');
     $data_advertise["advertise_desc"] = $this->input->post('advertise_desc');
@@ -439,23 +352,15 @@ class Admin extends CI_Controller {
     if( $result = $this->m_admin->update_Advertisement( $data_advertise ) )
     {
         $this->session->set_flashdata('admin', array(
-
           'from' => 1,
-
           'message' =>  "Data iklan berhasil di ubah !!",
-
         ));
-
         redirect(site_url('/admin'));
-    }else{
+   }else{
         $this->session->set_flashdata('admin', array(
-
           'from' => 0,
-
           'message' =>  "terjadi kesalahan saat merubah data !!",
-
         ));
-
         redirect(site_url('/admin'));
     }
   }
@@ -464,29 +369,20 @@ class Admin extends CI_Controller {
   {
     $location = './upload/iklan/';
     $data_advertise["advertise_id"] = $this->input->post('advertise_id');
-
     $filename = $this->input->post('advertise_photo');
     if( @unlink($location.$filename) )
     { 
         $result = $this->m_admin->delete_Advertisement( $data_advertise ) ;
         $this->session->set_flashdata('admin', array(
-
           'from' => 1,
-
           'message' =>  "Data iklan berhasil di hapus !!",
-
         ));
-
         redirect(site_url('/admin'));
     }else{
         $this->session->set_flashdata('admin', array(
-
           'from' => 0,
-
           'message' =>  "terjadi kesalahan saat menghapus data !!",
-
         ));
-
         redirect(site_url('/admin'));
     }
   }
