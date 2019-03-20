@@ -121,7 +121,7 @@
                                                 <div class="dropdown">
                                                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Kategori
                                                     <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
+                                                    <ul class="dropdown-menu" >
                                                     <?php
                                                         foreach( $relation_trees as $relation_tree  ):
                                                     ?>
@@ -134,7 +134,7 @@
                                                                 <!--  -->
                                                                 <ul class="dropdown-menu">
                                                                     <?php
-                                                                        foreach( $relation_tree->child as $relation_tree0  ):
+                                                                        foreach( $relation_tree->child as $relation_tree0 ):
                                                                     ?>
                                                                         <?php
                                                                             if( !empty( $relation_tree0->child ) ):
@@ -166,16 +166,11 @@
                                                 </div>
                                                 <!--  -->
                                                 <label for="">Kategori</label>
-
                                                 <label class="block clearfix">
-
                                                     <span class="block input-icon input-icon-right">
-
                                                         <input id="category_name" type="text" class="form-control"  name="category_name" value=""  readonly/>
                                                         <input id="category_id" type="hidden" class="form-control"  name="category_id" value=""  readonly />
-                                                        
                                                     </span>
-
                                                 </label>
                                                 <span style="color:red"><?php echo form_error('category_id'); ?></span>
                                                 
@@ -222,6 +217,27 @@
                                                 <span style="color:red"><?php echo form_error('item_name'); ?></span>
                                                 <!--  -->
                                                 <!--  -->
+                                                <div id="facilities" style="display:none" >
+                                                    <label for="">Fasilitas</label>
+                                                    <br>
+                                                        <?php
+                                                            if(isset($facilities))
+                                                            {
+                                                                $n=0;
+                                                                foreach($facilities as $t)
+                                                                {
+                                                                    echo form_checkbox('kamar_facility[]', $t->facility_name, set_checkbox('kamar_facility[]', $t->facility_name), 'id="basic_checkbox_'.$n.'"');
+                                                                    echo '<label for="basic_checkbox_'.$n.'">';
+                                                                    echo $t->facility_name;
+                                                                    echo '</label> <br> ';
+                                                                    $n++;
+                                                                }
+                                                            }
+                                                        ?>
+                                                        <br>
+                                                </div>
+                                               <!--  -->
+                                                <!--  -->
                                                 <label for="">Foto</label>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
@@ -252,3 +268,28 @@
         </div>
     </div>
 </div>
+<script src="<?php echo base_url();?>assets/jQuery.js"></script>
+<script>
+    $(document).ready(function(){
+      $('.dropdown-submenu a.test').on("click", function(e){
+          $(this).next('ul').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+      });
+    });
+
+    function select_category( category_id , category_name)
+    {
+        if( category_id == 3 ) // BTN
+        {
+            document.getElementById("facilities").style.display = "block";
+        }else{
+            document.getElementById("facilities").style.display = "none";
+        }
+        console.log("select " + category_id +" "+ category_name);
+        document.getElementById("category_name").value = category_name;
+        document.getElementById("category_id").value = category_id;
+    }
+
+    
+</script>

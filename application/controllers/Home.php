@@ -10,6 +10,7 @@ class Home extends Admin_Controller {
     $this->load->model("m_login");
     $this->load->model("m_register");
     $this->load->model("m_store");
+    $this->load->model("m_admin");
     $this->load->model("m_user");
     $this->load->model("m_store_item");
     $this->load->model("m_log");
@@ -42,7 +43,7 @@ class Home extends Admin_Controller {
           $data['files'] = $this->m_store_item->read_by_store_id( $store_id );
           $data[ "kosts" ] =array();// $this->m_kost->getData( $this->session->userdata('user_id') );
           $data[ "store_info" ] = $this->m_store->read_by_store_id( $store_id );
-          $data[ "facilities" ] = array();//$this->m_kost->get_facility(  );
+          $data[ "facilities" ] = $this->m_admin->get_facility(  );
 
           $data['page_title'] = "Detail ";
           $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') )[0];

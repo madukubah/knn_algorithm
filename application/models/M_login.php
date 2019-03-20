@@ -12,7 +12,7 @@ class M_login extends CI_Model{
         $username = $data[ "user_username" ];
         $pass = $data[ "user_password" ];
         $sql ="
-            SELECT a.user_profile_fullname, b.user_status , b.user_level , b.user_id, b.user_username
+            SELECT a.user_profile_fullname,  a.user_profile_image_path, b.user_status , b.user_level , b.user_id, b.user_username
             from user_profile a
             LEFT JOIN user b on b.user_id = a.user_id
             WHERE b.user_username = '$username'

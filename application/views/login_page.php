@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Rumah Aku</title>
     <meta name="description" content="rumahaku" />
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/logo/logots.png"/>
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/logo/rumahaku.jpeg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -97,7 +97,7 @@
                       <div class="space-6"></div>
                       <div class="social-login center">
                         <!-- <img src="<?php echo base_url()?>assets/images/logo/kominfo.png" height="40px"> -->
-                        <img src="<?php echo base_url()?>assets/images/logo/logots.png" height="60px">
+                        <img src="<?php echo base_url()?>assets/images/logo/rumahaku.jpeg" height="60px">
                         <!-- <img src="<?php echo base_url()?>assets/images/logo/pemprov.png" height="45spx">
                         <img src="<?php echo base_url()?>assets/images/logo/halosultra.jpg" height="45spx"> -->
                       </div>

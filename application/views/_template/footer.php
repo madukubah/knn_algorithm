@@ -33,23 +33,7 @@
 <script src="<?php echo base_url();?>assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/ace.min.js"></script>
-<script src="<?php echo base_url();?>assets/jQuery.js"></script>
-<script>
-    $(document).ready(function(){
-      $('.dropdown-submenu a.test').on("click", function(e){
-          $(this).next('ul').toggle();
-          e.stopPropagation();
-          e.preventDefault();
-      });
-    });
 
-    function select_category( category_id , category_name)
-    {
-      console.log("select " + category_id +" "+ category_name);
-      document.getElementById("category_name").value = category_name;
-      document.getElementById("category_id").value = category_id;
-    }
-</script>
 
 <script type="text/javascript">
   jQuery(function($){

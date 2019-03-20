@@ -23,16 +23,10 @@ class Room extends CI_Controller {
   
 
   public function index(  )
-
   {
-
     header("Access-Control-Allow-Origin: *");
-
     header("Content-Type: application/json; charset=UTF-8");
-
     http_response_code(200);
-
-
 
     echo json_encode($this->m_kamar->get_all_kamar() );
 

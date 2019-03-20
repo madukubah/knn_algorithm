@@ -36,6 +36,32 @@ class Item extends CI_Controller {
             "data" => $data["items"]
         )  );
     }
+    
+    public function items_by_store_id( $store_id = null )
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        http_response_code(200);
+
+        if( !isset( $store_id) ||  $store_id == null ) {
+            echo json_encode( array(
+                "length" => 0 ,
+                "data" => array()
+            )  );
+            return;
+        }
+
+        $start = $this->input->get('start', TRUE);
+        if( $start == null )
+              $start = 0;
+
+        $data["items"] = $this->m_item->get_data_limit_by_store_id( $store_id, $start );
+
+        echo json_encode( array(
+            "length" => count( $data["items"] ) ,
+            "data" => $data["items"]
+        )  );
+    }
 
     public function search( $query = "" )
     {

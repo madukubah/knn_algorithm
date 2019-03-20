@@ -13,6 +13,7 @@ class User extends CI_Controller
 
     public function login() 
     {
+        $log['log_message'] ="";
         if($_POST)
         {
             $message = 'Username atau password salah!';
@@ -25,13 +26,14 @@ class User extends CI_Controller
                 $result = $result[0];
                 if( $result->user_status != 0 )
                 {
-                    $data = array(
-                        'user_id' => $result->user_id,
-                        'user_username' => $result->user_username,
-                        'user_profile_fullname' => $result->user_profile_fullname,
-                        'user_level' => $result->user_level,
-                        'user_status' => $result->user_status
-                    );
+                        $data = array(
+                                'user_id' => $result->user_id,
+                                'user_username' => $result->user_username,
+                                'user_profile_fullname' => $result->user_profile_fullname,
+                                'user_level' => $result->user_level,
+                                'user_status' => $result->user_status,
+                                'user_profile_image_path' => $result->user_profile_image_path
+                        );
                     #Set value ke session
                     $this->session->set_userdata($data);
                     $log['log_message'] .= "true";

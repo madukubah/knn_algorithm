@@ -104,7 +104,7 @@
 
     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
 
-      <img src="<?php echo base_url()?>assets/images/logo/logots.png" height="40px" >
+      <img src="<?php echo base_url()?>assets/images/logo/rumahaku.jpeg" height="40px" >
 
     </div>
 

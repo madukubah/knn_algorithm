@@ -163,7 +163,8 @@
                                     <?php echo $no?>
                                 </td>
                                 <td>
-                                    <?php echo $file->item_name ?>
+                                    <?php echo $file->item_name ?> (
+                                    <?php echo $file->category_name ?> )
                                 </td>
                                 <td>
                                     <?php echo  "Rp. ".$file->item_price ?>
@@ -202,6 +203,13 @@
                                 </td>
                                 <td>
                                     <?php echo  $file->item_description   ?>
+                                    <br>
+                                    <?php
+                                      if( !empty( $file->item_facility ) ){
+                                          echo "Fasilitas : <br>";
+                                          echo  $file->item_facility;
+                                      }
+                                      ?>
                                 </td>
                                 <td>
                                   <button class="btn btn-white btn-info btn-bold btn-xs" data-toggle="modal" data-target="#editModalDocument<?php echo $file->item_id ;?>">
@@ -220,7 +228,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"><b>#Edit Ternak</b></h4>
+                                            <h4 class="modal-title"><b>#Edit </b></h4>
                                         </div>
                                         <div class="modal-body">
                                         <?php echo form_open_multipart( "item/edit_item" ) ;?>
@@ -255,6 +263,30 @@
                                               <span style="color:red"><?php echo form_error('item_price'); ?></span>
                                               <!--  -->
                                             </div>
+                                            <?php if ( $file->category_id == 3 ): ?>
+                                              <div class="form-group">
+                                                <!--  -->
+                                                <label for="">Fasilitas</label>
+                                                <br>
+                                                    <?php
+                                                        if(isset($facilities))
+                                                        {
+                                                            $n=0;
+                                                            $f = (explode(";", $file->item_facility ));
+                                                            foreach($facilities as $t)
+                                                            {
+                                                                echo form_checkbox('item_facility[]', $t->facility_name, set_checkbox('item_facility[]', $t->facility_name), ''.is_checked( $t->facility_name, $f ).'  id="basic_checkbox_'.$n.'"');
+                                                                echo '<label for="basic_checkbox_'.$n.'">';
+                                                                echo $t->facility_name;
+                                                                echo '</label> <br> ';
+                                                                $n++;
+                                                            }
+                                                        }
+                                                    ?>
+                                                  <span style="color:red"><?php echo form_error('kamar_keterangan'); ?></span>
+                                                <!--  -->
+                                              </div>
+                                            <?php endif; ?>
                                             <div class="form-group">
                                               <!--  -->
                                               <label for="">Keterangan</label>
@@ -267,6 +299,7 @@
                                                 <span style="color:red"><?php echo form_error('item_description'); ?></span>
                                                <!--  -->
                                             </div>
+                                            
                                             <div class="form-group">
                                               <!-- FOTO -->
                                               <!-- <label for="">Foto</label>
@@ -294,10 +327,10 @@
                                         <?php echo form_open("item/delete_item");?>
                                         <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">#Hapus Ternak</h4>
+                                        <h4 class="modal-title">#Hapus </h4>
                                         </div>
                                         <div class="modal-body">
-                                        <div class="alert alert-danger">Anda yakin menghapus Ternak <b><?php echo $file->item_name ?></b> ?</div>
+                                        <div class="alert alert-danger">Anda yakin menghapus  <b><?php echo $file->item_name ?></b> ?</div>
                                         </div>
                                         <div class="modal-footer">
                                         <input type="hidden" class="form-control" value='<?php echo $file->item_id; ?>' name="item_id" required="required" readonly>

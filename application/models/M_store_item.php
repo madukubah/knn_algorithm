@@ -16,9 +16,10 @@ class M_store_item extends CI_Model{
     public function read_by_store_id( $store_id )
     {
         $sql = "
-            SELECT a.*, b.*, c.* FROM store_item a 
+            SELECT a.*, b.*, c.*, z.category_name FROM store_item a 
             LEFT JOIN item b on b.item_id = a.item_id 
             LEFT JOIN store c on c.store_id = a.store_id
+            LEFT JOIN category z on z.category_id = b.category_id 
             WHERE a.store_id = '$store_id'
         ";
 

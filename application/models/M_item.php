@@ -34,14 +34,15 @@ class M_item extends CI_Model{
             'item_id' => $data_item['item_id']
         ));
     }
-
+    
     // API
     public function get_data_limit( $category_id = -1, $start = 0 )
     {
         $sql = "
-            SELECT a.*, x.*, y.* FROM item a
+            SELECT a.*, x.*,y.*, z.category_name FROM item a
             LEFT JOIN store y on y.store_id = a.store_id
-            LEFT JOIN user_profile x on x.user_id = y.user_id       
+            LEFT JOIN category z on z.category_id = a.category_id 
+            LEFT JOIN user_profile x on x.user_id = y.user_id     
         ";
         if( $category_id != -1 )
         {
@@ -54,12 +55,33 @@ class M_item extends CI_Model{
             "; 
         return $this->db->query( $sql )->result();
     }
+    
+    public function get_data_limit_by_store_id( $store_id = -1, $start = 0 )
+    {
+        $sql = "
+            SELECT a.*, x.*,y.*, z.category_name FROM item a
+            LEFT JOIN store y on y.store_id = a.store_id
+            LEFT JOIN category z on z.category_id = a.category_id 
+            LEFT JOIN user_profile x on x.user_id = y.user_id     
+        ";
+        if( $store_id != -1 )
+        {
+            $sql .= "
+                WHERE a.store_id = '$store_id'               
+            ";  
+        }
+        $sql .= "
+                limit $start , 5
+            "; 
+        return $this->db->query( $sql )->result();
+    }
 
     public function search( $query = ""  , $start = 0 )
     {
         $sql = "
-            SELECT a.*, b.*, x.*, y.* FROM item a
+            SELECT a.*, b.*, x.*, y.* , z.category_name FROM item a
             LEFT JOIN store y on y.store_id = a.store_id
+            LEFT JOIN category z on z.category_id = a.category_id 
             LEFT JOIN user_profile x on x.user_id = y.user_id       
             LEFT JOIN category b on b.category_id = a.category_id
 
@@ -68,8 +90,7 @@ class M_item extends CI_Model{
             OR b.category_name LIKE '%$query%'
             OR y.store_name LIKE '%$query%'
             OR y.store_address LIKE '%$query%'
-            OR x.user_profile_fullname LIKE '%$query%'
-            
+            OR x.user_profile_fullname LIKE '%$query%'            
         ";
 
         $sql .= "

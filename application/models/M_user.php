@@ -33,9 +33,18 @@ class M_user extends CI_Model{
     public function getUser($id)
     {
         $sql = "
-            SELECT * FROM user WHERE user_id=$id;
+            SELECT a.*, b.* FROM user a 
+            left join user_profile b on b.user_id = a.user_id
+            WHERE a.user_id=$id;
         ";
         return $query = $this->db->query($sql)->result();
-
+    }
+    public function update_profile( $data_user_profile, $data_user_profile_param )
+    {
+        return  $this->db->update('user_profile', $data_user_profile, $data_user_profile_param);
+    }
+    public function update( $data_user, $data_user_param )
+    {
+        return  $this->db->update('user', $data_user, $data_user_param);
     }
 }

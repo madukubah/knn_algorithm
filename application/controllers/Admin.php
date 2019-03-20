@@ -32,6 +32,7 @@ class Admin extends Admin_Controller {
         $this->m_log->inserLog( $log );
        $data['users'] = $this->m_admin->getData();
         $data['mobiles'] = $this->m_admin->get_mobile();
+        $data['facilities'] = $this->m_admin->get_facility();
        $data['Advertisements'] = $this->m_admin->get_Advertisement();
         $this->load->view("_template/header");
         $this->load->view("_template/sidebar_menu");

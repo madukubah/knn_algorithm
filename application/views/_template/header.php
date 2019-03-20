@@ -6,12 +6,13 @@
     <title>Rumah Aku</title>
     <meta name="description" content="rumahaku" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/logo/logots.png"/>
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/logo/rumahaku.jpeg"/>
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace-skins.min.css" />
+
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace-rtl.min.css" />
     <script type="text/javascript" src="<?php echo base_url();?>assets/ajax/ajax_document.js"></script>
     <style type="text/css">
@@ -46,7 +47,7 @@
         <div class="navbar-header pull-left">
           <a href="<?php echo site_url()?>" class="navbar-brand">
           <small>
-          <img src="<?php echo base_url()?>assets/images/logo/logots.png" height="26px">
+          <img src="<?php echo base_url()?>assets/images/logo/rumahaku.jpeg" height="26px">
             Rumah Aku
           </small>
           </a>
@@ -55,7 +56,9 @@
           <ul class="nav ace-nav">
             <li class="light-blue dropdown-modal">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-              <img class="nav-user-photo" src="<?php echo base_url()?>assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                <?php if( !empty($this->session->userdata('user_profile_image_path')) ): ?>
+                    <img class="nav-user-photo" src="<?php echo base_url( "upload/user/" ).$this->session->userdata('user_profile_image_path') ?> " alt="Jason's Photo" />
+                <?php endif; ?>
               <span class="user-info">
               <small>Welcome,</small>
               <?php echo $this->session->userdata('user_profile_fullname')?>
@@ -70,7 +73,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="<?php echo site_url('profile')?>">
                   <i class="ace-icon fa fa-user"></i>
                   Profile
                   </a>

@@ -279,7 +279,169 @@
                 </div>
                 <!-- /.col -->
             </div>
+            <!-- /.FACILITIES -->
+            <div class="row">
+                <div class="col-xs-12"> 
+                    <div class="widget-box widget-color-orange" id="widget-box-3">
+                        <div class="widget-header widget-header-small">
+                        <h6 class="widget-title">
+                            <i class="ace-icon fa fa-sort"></i>
+                            Room Facilities
+                        </h6>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="reload">
+                            <i class="ace-icon fa fa-refresh"></i>
+                            </a>
+                            <a href="#" data-action="collapse">
+                            <i class="ace-icon fa fa-plus" data-icon-show="fa-minus" data-icon-hide="fa-plus"></i>
+                            </a>
+                        </div>
+                        </div>
+                        <div class="widget-body">
+                        <div class="widget-main">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="pull-left">
+                                    <div class="btn-group">
+                                        <!-- Btn Add User -->
+                                        <button class="btn btn-white btn-info btn-bold" data-toggle="modal" data-target="#myModalAddFacilities">
+                                        <i class="ace-icon fa fa-plus bigger-120 blue"></i>Add
+                                        </button>
 
+                                        <!-- Btn Refresh Page -->
+                                        <a href="<?php echo site_url('admin')?>" class="btn btn-white btn-success btn-bold tooltip-success" data-rel="tooltip" data-placement="top" title="Refresh Page">
+                                        <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <!-- Modal Add Image-->
+                                        <div class="modal fade" id="myModalAddFacilities" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title"><b>#Add Facilites</b></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?php echo form_open_multipart("admin/add_facility");?>
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label>Facility Name</label>
+                                                            <color classi="text-red"> *</color>
+                                                            <input type="text" class="form-control" placeholder="Facility Name" name="facility_name" required="required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Add</button>
+                                                    </div>
+                                                    <?php echo form_close(); ?>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Of Modal -->
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <br>
+                            <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thin-border-bottom">
+                                <tr >
+                                    <th style="width:50px">No</th>
+                                    <!-- <th>id</th> -->
+                                    <th>Facility Name</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                $no =1;
+
+                                foreach( $facilities as $facility ):
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $no?>
+                                    </td>
+                                    <!-- <td>
+                                        <?php echo $facility->facility_id?>
+                                    </td> -->
+                                    <td>
+                                        <?php echo $facility->facility_name?>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-white btn-info btn-bold btn-xs" data-toggle="modal" data-target="#editModalFacilities<?php echo $facility->facility_id;?>">
+                                            <i class="ace-icon fa fa-edit bigger-120 blue"></i>
+                                        </button>
+                                        <button class="btn btn-white btn-danger btn-bold btn-xs" data-toggle="modal" data-target="#deleteModalFacilities<?php echo $facility->facility_id?>">
+                                            <i class="ace-icon fa fa-trash bigger-120 red"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                    <!-- mdals -->
+                                    <!-- Modal Edit-->
+                                    <div class="modal fade" id="editModalFacilities<?php echo $facility->facility_id?>" role="dialog">
+                                        <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><b>#Edit Facility</b></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                            <?php echo form_open('admin/edit_facility');?>
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <label>Facility Name</label>
+                                                    <color class="text-red"> *</color>
+                                                    <input type="hidden" class="form-control" value='<?php echo $facility->facility_id; ?>' name="facility_id" required="required" readonly>
+                                                    <input type="text" class="form-control" value='<?php echo $facility->facility_name; ?>' name="facility_name" required="required" >
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </div>
+                                            <?php echo form_close(); ?>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <!-- Modal Delete-->
+                                    <div class="modal fade" id="deleteModalFacilities<?php echo  $facility->facility_id;?>" role="dialog">
+                                        <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <?php echo form_open("admin/delete_facility");?>
+                                            <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">#Delete Facility</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                            <div class="alert alert-danger">apa anda yakin ingin menghapus "<b><?php echo $facility->facility_name?></b>?" ?</div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <input type="hidden" class="form-control" value="<?php echo  $facility->facility_id?>" name="facility_id" required="required">
+                                            <button type="submit" class="btn btn-danger">Ya</button>
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-large"></i>&nbsp;Batal</button>
+                                            </div>
+                                            <?php echo form_close(); ?>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                <?php 
+                                $no++;
+                                endforeach;?>
+                                </tbody>
+                            </table>
+                            </div>    
+                        </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            <!--  -->
            <!-- MOBILEVERSION -->
            <div class="row">
                <div class="col-xs-12"> 
