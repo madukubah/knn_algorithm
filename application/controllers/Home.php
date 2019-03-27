@@ -22,6 +22,7 @@ class Home extends Admin_Controller {
 
   public function index() 
   {
+      $data['page_name'] = "Beranda";
       $log['log_datetime'] = date("Y-m-d H:i:s");
       $log['log_message'] = "HOMEPAGE :  user => ".$this->session->userdata('user_username')."( id = ".$this->session->userdata('user_id').") ; result => ";
       $log['user_id'] = $this->session->userdata('user_id');

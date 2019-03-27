@@ -1,19 +1,18 @@
 <?php
-
   $menus = array(
     array(
       'menuId' => "home",
-      'menuName' => "Home",
+      'menuName' => "Beranda",
       // 'menuPath' => site_url("home"),
       'menuPath' => site_url(""),
       'menuIcon' => "fa fa-file-archive-o"
     ),
 
     array(
-      'menuId' => "store",
-      'menuName' => "Tambah Toko",
-      'menuPath' => site_url("store"),
-      'menuIcon' => 'fa fa-plus'
+      'menuId' => "data_testing",
+      'menuName' => "Data Testing",
+      'menuPath' => site_url("data_testing"),
+      'menuIcon' => 'fa fa-server'
     ),
 
     array(
@@ -56,94 +55,52 @@
 
 
 ?>
-
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <?php if( !empty($this->session->userdata('user_profile_image_path')) ): ?>
+            <img class="img-circle" src="<?php echo base_url( "upload/user/" ).$this->session->userdata('user_profile_image_path') ?> " alt="Jason's Photo" />
+        <?php endif; ?>
+      </div>
+      <div class="pull-left info">
+        <?php echo $this->session->userdata('user_profile_fullname')?>
+      </div>
+    </div>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MENU</li>
+      <?php
+        foreach($menus as $menu):
+        ?>
+        <li id="<?php echo $menu['menuId'] ?>">
+          <a href="<?php echo $menu['menuPath'] ?>">
+          <i class="menu-icon <?php echo $menu['menuIcon'] ?>"></i>
+          <span class="menu-text"> <?php echo $menu['menuName'] ?> </span>
+          </a>
+          <b class="arrow"></b>
+        </li>
+        <?php
+          endforeach;
+      ?>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>
 <script type="text/javascript">
-    function a(path){
-      console.log(path);
-    }
-
-</script>
-
-<script type="text/javascript">
-
-</script>
-
-<script type="text/javascript">
-
     function menuActive( id ){
-
         // var a =document.getElementById("menu").children[num-1].className="active";
         if( id == "" )
           var a =document.getElementById("home").className="active";
         else
           var a =document.getElementById(id).className="active";
-
         console.log(a);
-
     }
-
 </script>
 
-<div class="main-container ace-save-state" id="main-container">
 
-<script type="text/javascript">
-
-  try{ace.settings.loadState('main-container')}catch(e){}
-
-</script>
-
-<div id="sidebar" class="sidebar responsive ace-save-state">
-
-  <script type="text/javascript">
-
-    try{ace.settings.loadState('sidebar')}catch(e){}
-
-  </script>
-
-  <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-
-    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-
-      <img src="<?php echo base_url()?>assets/images/logo/rumahaku.jpeg" height="40px" >
-
-    </div>
-
-    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-
-      <span class="btn btn-success"></span>
-
-      <span class="btn btn-info"></span>
-
-      <span class="btn btn-warning"></span>
-
-      <span class="btn btn-danger"></span>
-
-    </div>
-
-  </div>
-
-  <!-- /.sidebar-shortcuts -->
-  <ul id="menu" class="nav nav-list">
-    <?php
-      foreach($menus as $menu):
-    ?>
-    <li id="<?php echo $menu['menuId'] ?>">
-      <a href="<?php echo $menu['menuPath'] ?>">
-      <i class="menu-icon <?php echo $menu['menuIcon'] ?>"></i>
-      <span class="menu-text"> <?php echo $menu['menuName'] ?> </span>
-      </a>
-      <b class="arrow"></b>
-    </li>
-    <?php
-      endforeach;
-    ?>
-
-  </ul>
-
-  <!-- /.nav-list -->
-  <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-    <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-  </div>
-</div>
 
 

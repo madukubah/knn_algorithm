@@ -1,95 +1,42 @@
-<div class="footer">
-  <div class="footer-inner">
-    <div class="footer-content">
-      <span class="bigger-120">
-      <span class="red bolder">Madukubah </span>
-       Application &copy; 2018 
-      </span>
-      &nbsp; &nbsp;
-      <span class="action-buttons">
-      <a href="#">
-      <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-      </a>
-      <a href="#">
-      <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-      </a>
-      <a href="#">
-      <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-      </a>
-      </span>
-    </div>
-  </div>
-</div>
-<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-</a>
-</div>
-<script src="<?php echo base_url();?>assets/js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
-  if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url();?>assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-</script>
-<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/jquery-ui.custom.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/ace-elements.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/ace.min.js"></script>
 
+  </div>  
 
-<script type="text/javascript">
-  jQuery(function($){
-    $('[data-rel=tooltip]').tooltip();
-    $('[data-rel=popover]').popover({html:true});
-  });
-</script>
-<script type="text/javascript">
-    $( document ).ready(function() {
-    });
-</script>
+<!-- jQuery 3 -->
+<script src="<?php echo base_url();?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url();?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}
+  $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- <script type="text/javascript" src="<?php echo base_url();?>assets/ckeditor/ckeditor.js"></script> -->
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ckfinder/ckfinder.js"></script>
-<script>
-  function f(x)
-  {
-  // Replace the <textarea id="editor1"> with a CKEditor
-  // instance, using default configuration.
-    CKEDITOR.replace('editor'+x,{
-            toolbar : 'MyToolbar',
-            width:"100%",
-            filebrowserBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html?type=Images',
-            filebrowserFlashBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html?type=Flash',
-    });
-
-  }
-  
-  var i = 1;
-  while(i <= 100){
-    f(i);
-    i=i+1;
-  }
-
-    CKEDITOR.replace('editorx',{
-            toolbar : 'MyToolbar',
-            width:"100%",
-            filebrowserBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html',
-            filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html?type=Images',
-            filebrowserFlashBrowseUrl : '<?php echo base_url();?>assets/js/ckfinder/ckfinder.html?type=Flash',
-    });
-  
-//olah dokument
-
-  
-
-  
-</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?php echo base_url();?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="<?php echo base_url();?>assets/bower_components/raphael/raphael.min.js"></script>
+<script src="<?php echo base_url();?>assets/bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="<?php echo base_url();?>assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<?php echo base_url();?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?php echo base_url();?>assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?php echo base_url();?>assets/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="<?php echo base_url();?>assets/bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url();?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?php echo base_url();?>assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="<?php echo base_url();?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url();?>assets/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo base_url();?>assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
 </body>
 </html>

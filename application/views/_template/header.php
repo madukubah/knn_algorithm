@@ -1,94 +1,99 @@
   <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
-    <title>Rumah Aku</title>
-    <meta name="description" content="rumahaku" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/logo/rumahaku.jpeg"/>
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+ <!-- Bootstrap 3.3.7 -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/font-awesome/css/font-awesome.min.css">
+ <!-- Ionicons -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/Ionicons/css/ionicons.min.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/AdminLTE.min.css">
+ <!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/skins/_all-skins.min.css">
+ <!-- Morris chart -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/morris.js/morris.css">
+ <!-- jvectormap -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/jvectormap/jquery-jvectormap.css">
+ <!-- Date Picker -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+ <!-- Daterange picker -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+ <!-- bootstrap wysihtml5 - text editor -->
+ <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace-skins.min.css" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace-rtl.min.css" />
-    <script type="text/javascript" src="<?php echo base_url();?>assets/ajax/ajax_document.js"></script>
-    <style type="text/css">
-      .setting-border {
-          border-style: solid;
-          border-width: medium;
-          width: auto !important;
-          height: 200px !important;
-          border-color: #E8B10D;
-      }
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini" onload="menuActive('<?php echo $this->uri->segment(1); ?>')" >
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="index2.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>K</b>NN</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>K-</b>NN</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
 
-      .setting-border video {
-        width: 100%    !important;
-        height: auto   !important;
-      }
-
-      
-    </style>
-    <script src="<?php echo base_url();?>assets/js/ace-extra.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  </head>
-  <!-- <body class="no-skin" onload="menuActive('<?php echo $this->uri->segment(1); ?>') ; loadDocument('<?php echo site_url(); ?>', '<?php echo  $this->session->userdata('user_id');?>')"> -->
-  <body class="no-skin" onload="menuActive('<?php echo $this->uri->segment(1); ?>')" >
-    <div id="navbar" class="navbar navbar-default ace-save-state">
-      <div class="navbar-container ace-save-state" id="navbar-container">
-        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-        <span class="sr-only">Toggle sidebar</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
-        <div class="navbar-header pull-left">
-          <a href="<?php echo site_url()?>" class="navbar-brand">
-          <small>
-          <img src="<?php echo base_url()?>assets/images/logo/rumahaku.jpeg" height="26px">
-            Rumah Aku
-          </small>
-          </a>
-        </div>
-        <div class="navbar-buttons navbar-header pull-right" role="navigation">
-          <ul class="nav ace-nav">
-            <li class="light-blue dropdown-modal">
-              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
                 <?php if( !empty($this->session->userdata('user_profile_image_path')) ): ?>
-                    <img class="nav-user-photo" src="<?php echo base_url( "upload/user/" ).$this->session->userdata('user_profile_image_path') ?> " alt="Jason's Photo" />
+                    <img class="user-image" src="<?php echo base_url( "upload/user/" ).$this->session->userdata('user_profile_image_path') ?> " alt="Jason's Photo" />
                 <?php endif; ?>
-              <span class="user-info">
-              <small>Welcome,</small>
-              <?php echo $this->session->userdata('user_profile_fullname')?>
-              </span>
-              <i class="ace-icon fa fa-caret-down"></i>
+                <?php echo $this->session->userdata('user_profile_fullname')?>
               </a>
-              <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                <li>
-                  <a href="#">
-                  <i class="ace-icon fa fa-cog"></i>
-                  Settings
-                  </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <?php if( !empty($this->session->userdata('user_profile_image_path')) ): ?>
+                      <img class="nav-user-photo" src="<?php echo base_url( "upload/user/" ).$this->session->userdata('user_profile_image_path') ?> " alt="Jason's Photo" />
+                  <?php endif; ?>
+
+                  <p>
+                    <?php echo $this->session->userdata('user_profile_fullname')?>
+                    <small>Member since Nov. 2012</small>
+                  </p>
                 </li>
-                <li>
-                  <a href="<?php echo site_url('profile')?>">
-                  <i class="ace-icon fa fa-user"></i>
-                  Profile
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="<?php echo site_url('user/logout')?>">
-                  <i class="ace-icon fa fa-power-off"></i>
-                  Logout
-                  </a>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="<?php echo site_url('profile')?>" class="btn btn-default btn-flat">Profile</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="<?php echo site_url('user/logout')?>" class="btn btn-default btn-flat">Sign out</a>
+                  </div>
                 </li>
               </ul>
             </li>
+            <!-- Control Sidebar Toggle Button -->
+            <li>
+              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            </li>
           </ul>
         </div>
-      </div>
-     <!-- /.navbar-container -->
-   </div>
+      </nav>
+    </header>
+
