@@ -14,11 +14,11 @@ class Store extends Admin_Controller {
     $this->load->helper('array');
     $this->load->library("pagination");
     $this->load->library('upload');
-    $this->load->library('form_validation'); 
+    $this->load->library('form_validation');
   } 
 
 
-  public function index() 
+  public function index()
   {
     $data['page_title'] = "Tambah ";
     $config = array(

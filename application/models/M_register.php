@@ -16,6 +16,7 @@ class M_register extends CI_Model{
 
     public function register($data, $dataProfile) {
         $data['user_level'] = 2;
+        $data['user_status'] = 1;
         $data['create_date'] = date("Y-m-d");
         $this->db->where('user_username', $data['user_username']);
         $result = $this->db->get('user')->row();

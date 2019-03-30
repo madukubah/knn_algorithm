@@ -2,23 +2,24 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_data_testing_normalized extends CI_Model{
+class M_data_uji_normalized extends CI_Model{
     function __construct() {
         parent::__construct();
         $this->load->database();
     }
     public function create( $data_testing )
     {
-        return $this->db->insert_batch('data_testing_normalized', $data_testing);
+        return $this->db->insert_batch('data_uji_normalized', $data_testing);
     }
     public function read( $data_id = -1, $mode = "object" )
     {
         $sql = "
-            SELECT * from data_testing_normalized
+            SELECT a.*, b.* from data_uji_normalized a
+            left join user_profile b on b.user_id = a.user_id
         ";
         if( $data_id != -1 ){
             $sql .= "
-                where data_id = '$data_id'
+                where a.data_id = '$data_id'
             ";  
         }
         if( $mode == "array" )
@@ -28,15 +29,15 @@ class M_data_testing_normalized extends CI_Model{
     }
     public function update( $data_testing, $data_testing_param )
     {
-        return  $this->db->update('data_testing_normalized', $data_testing, $data_testing_param);
+        return  $this->db->update('data_uji_normalized', $data_testing, $data_testing_param);
     }
     public function delete(  $data_testing_param )
     {
-        return $this->db->delete( "data_testing_normalized" , $data_testing_param);
+        return $this->db->delete( "data_uji_normalized" , $data_testing_param);
     }
     public function clear(   )
     {
-        return $query = $this->db->query( " TRUNCATE data_testing_normalized " );
+        return $query = $this->db->query( " TRUNCATE data_uji_normalized " );
     }
 
 }

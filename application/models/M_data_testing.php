@@ -34,6 +34,13 @@ class M_data_testing extends CI_Model{
 
     public function get_min_max(  )
     {
+        $sql = "
+            SELECT * from data_testing
+        ";
+         $query = $this->db->query($sql)->result();
+         if( empty(  $query ) ){
+            return array();
+         }
         return array(
             "min_data_semester" => $this->db->query("SELECT a.data_semester FROM data_testing a ORDER BY a.data_semester ASC LIMIT 1")->result(  )[0]->data_semester,
             "max_data_semester" => $this->db->query("SELECT a.data_semester FROM data_testing a ORDER BY a.data_semester DESC LIMIT 1")->result(  )[0]->data_semester,

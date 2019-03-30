@@ -81,15 +81,15 @@ class User extends CI_Controller
                           // 'min_length' => 'password minimal 5 karakter'
                   ),
           ),
-          array(
-                  'field' => 'user_profile_address',
-                  'label' => 'Address',
-                  'rules' => 'required',
-                  'errors' => array(
-                          'required' => 'alamat harus di isi',
-                          // 'min_length' => 'password minimal 5 karakter'
-                  ),
-          ),
+        //   array(
+        //           'field' => 'user_profile_address',
+        //           'label' => 'Address',
+        //           'rules' => 'required',
+        //           'errors' => array(
+        //                   'required' => 'alamat harus di isi',
+        //                   // 'min_length' => 'password minimal 5 karakter'
+        //           ),
+        //   ),
           array(
                   'field' => 'user_username',
                   'label' => 'Username',
@@ -108,58 +108,58 @@ class User extends CI_Controller
                           'min_length' => 'password minimal 5 karakter'
                   ),
           ),
-          array(
-            'field' => 'user_profile_phone',
-            'label' => 'Phone',
-            'rules' => 'required|min_length[12]',
-            'errors' => array(
-                    'required' => 'no hp harus di isi',
-                    'min_length' => 'no hp harus 12 digit',
-            ),
-          )
+        //   array(
+        //     'field' => 'user_profile_phone',
+        //     'label' => 'Phone',
+        //     'rules' => 'required|min_length[12]',
+        //     'errors' => array(
+        //             'required' => 'no hp harus di isi',
+        //             'min_length' => 'no hp harus 12 digit',
+        //     ),
+        //   )
        );
     
        $this->form_validation->set_rules($config);
       $log['log_datetime'] = date("Y-m-d H:i:s");
       $log['log_message'] = "a person REGISTER in system ; result =>";
         if ($this->form_validation->run() === true) {
-          $dataProfile['user_profile_fullname'] = $this->input->post('user_profile_fullname');
-          $dataProfile['user_profile_email'] = $this->input->post('user_profile_email');
-          $dataProfile['user_profile_address'] = $this->input->post('user_profile_address');
-          $dataProfile['user_profile_phone'] = $this->input->post('user_profile_phone');
-          $data['user_username'] = str_ireplace(" ", "", $this->input->post('user_username') );
-          $data['user_password'] = md5($this->input->post('user_password'));
-          $result = $this->m_register->register($data, $dataProfile);
-          if( $result['status'] ){
-            $this->session->set_flashdata('login', array(
-              'from' => 1,
-              'message' => 'registrasi berhasil, silahkan login'
-            ));
-            $log['log_message'] .= "true";
-            $this->m_log->inserLog( $log );
-            redirect(site_url('/user/login'));
-          }else{
-            $this->session->set_flashdata('register', $result['message'] );
-            $log['log_message'] .= "false; ".$result['message'];
-            $this->m_log->inserLog( $log );
-            redirect(site_url('/user/register'));
-          }
+                if( strpos( $this->input->post('user_username') ," ") ){
+                        $this->session->set_flashdata('register', 'username tidak boleh mengandung spasi');
+                        redirect(site_url('/user/register'));
+                }
+                $dataProfile['user_profile_fullname'] = $this->input->post('user_profile_fullname');
+                $dataProfile['user_profile_email'] = $this->input->post('user_profile_email');
+                $dataProfile['user_profile_address'] = "";
+                $dataProfile['user_profile_phone'] = "";
+                $data['user_username'] = str_ireplace(" ", "", $this->input->post('user_username') );
+                $data['user_password'] = md5($this->input->post('user_password'));
+                $result = $this->m_register->register($data, $dataProfile);
+                if( $result['status'] ){
+                        $this->session->set_flashdata('login', array(
+                        'from' => 1,
+                        'message' => 'registrasi berhasil, silahkan login'
+                        ));
+                        $log['log_message'] .= "true";
+                        $this->m_log->inserLog( $log );
+                        redirect(site_url('/user/login'));
+                }else{
+                        $this->session->set_flashdata('register', $result['message'] );
+                        $log['log_message'] .= "false; ".$result['message'];
+                        $this->m_log->inserLog( $log );
+                        redirect(site_url('/user/register'));
+                }
         }else{
-          $data['positions'] = $result[0];
-          $data['groups'] = $result[1];
-          $log['log_message'] .= "false";
-          $this->m_log->inserLog( $log );
-          $this->load->view("register_page", $data);
+                $data['positions'] = $result[0];
+                $data['groups'] = $result[1];
+                $log['log_message'] .= "false";
+                $this->m_log->inserLog( $log );
+                $this->load->view("register_page", $data);
         }
     }
 
     public function logout() {
-        $log['log_datetime'] = date("Y-m-d H:i:s");
-        $log['log_message'] = "LOGOUT  user => ".$this->session->userdata('user_username')."( id = ".$this->session->userdata('user_id').") ; result => ";
-        $log['user_id'] = $this->session->userdata('user_id');
-        $log['log_message'] .= "true";
-        $this->m_log->inserLog( $log );
+        
         $this->session->sess_destroy();
-        redirect('' . base_url());
+        redirect('' . base_url() );
       }
 }

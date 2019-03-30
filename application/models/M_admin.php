@@ -53,50 +53,11 @@ class M_admin extends CI_Model{
 
     }
 
-    public function deleteUser( $data_user )
+    public function deleteUser( $data_user_param )
     {
-        $user_id = $data_user["user_id"];
-        $sql = "
-                SELECT * from store
-                WHERE user_id = '$user_id'
-            ";
-
-        $stores = $this->db->query($sql)->result();
-        foreach( $stores as $store )
-        {
-            $sql = "
-                SELECT * from store_item
-                WHERE store_id = '$store->store_id'
-            ";
-
-            $item = $this->db->query($sql)->result();
-            foreach( $item as $k )
-            {
-                // hapus itam dulu
-                $this->db->delete( "item" , array(
-
-                    'item_id' => $k->item_id
-
-                ));
-            }
-            // hapus store item (relasi)
-            $this->db->delete( "store_item" , array(
-                'store_id' => $store->store_id
-            ));        
-            // hapus store
-            $this->db->delete( "store" , array(
-                'store_id' => $store->store_id
-            )); 
-        }
-
-        // hapus user
-        $this->db->delete( "user_profile" , array(
-            'user_id' => $user_id
-        )); 
-
-        return $this->db->delete( "user" , array(
-            'user_id' => $user_id
-        )); 
+        $this->db->delete( "data_uji" , $data_user_param );
+        $this->db->delete( "user_profile" , $data_user_param );
+        return $this->db->delete( "user" , $data_user_param );
     }
 
     // FACILITIES

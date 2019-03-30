@@ -2,55 +2,53 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends Admin_Controller {
+class Home extends User_Controller {
+  // class Home extends CI_Controller {
 
   public function __construct(){
       parent::__construct();
       // $this->output->enable_profiler(TRUE);
     $this->load->model("m_login");
     $this->load->model("m_register");
-    $this->load->model("m_store");
     $this->load->model("m_admin");
     $this->load->model("m_user");
-    $this->load->model("m_store_item");
     $this->load->model("m_log");
     $this->load->helper('array');
     $this->load->library("pagination");
-
-  } 
-
+  }
+  // public function index() 
+  // {
+  //   if(
+  //       $this->session->userdata('user_level') == 1
+  //   )
+  //   {
+  //       redirect(site_url('/admin/home'));
+  //   }
+  //     // $data['page_name'] = "Beranda";
+    
+  //   //   $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') );
+  //   //   $data['data_uji'] = $this->m_user->getUser( $this->session->userdata('user_id') );
+  //   //   $this->load->view("_user/_template/header");
+  //   // //   $this->load->view("_user/_template/sidebar_menu");
+  //   //       // $this->load->view("_user/landing_page/View",$data);
+  //   //   $this->load->view("_user/_template/footer");  
+  // }
 
   public function index() 
   {
+    if(
+        $this->session->userdata('user_level') == 1
+    )
+    {
+        redirect(site_url('/admin/home'));
+    }
       $data['page_name'] = "Beranda";
-      $log['log_datetime'] = date("Y-m-d H:i:s");
-      $log['log_message'] = "HOMEPAGE :  user => ".$this->session->userdata('user_username')."( id = ".$this->session->userdata('user_id').") ; result => ";
-      $log['user_id'] = $this->session->userdata('user_id');
-      $log['log_message'] .= "true";
-      $this->m_log->inserLog( $log );
-    //   $data=$this->m_kost->getData( $this->session->userdata('user_id') );
-    //   $data['files'] = $data;
-      $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') )[0];
-      $data['files'] =$this->m_store->read( $this->session->userdata('user_id') );
-      $this->load->view("_template/header");
-      $this->load->view("_template/sidebar_menu");
-          $this->load->view("_template/content",$data);
-      $this->load->view("_template/footer");  
-  }
-
-  //   DETAIL
-  public function detail_store( $store_id  )
-  {
-          $data['files'] = $this->m_store_item->read_by_store_id( $store_id );
-          $data[ "kosts" ] =array();// $this->m_kost->getData( $this->session->userdata('user_id') );
-          $data[ "store_info" ] = $this->m_store->read_by_store_id( $store_id );
-          $data[ "facilities" ] = $this->m_admin->get_facility(  );
-
-          $data['page_title'] = "Detail ";
-          $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') )[0];
-          $this->load->view("_template/header");
-          $this->load->view("_template/sidebar_menu");
-              $this->load->view("store/View_detail",$data);
-          $this->load->view("_template/footer");
+    
+      $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') );
+      $data['data_uji'] = $this->m_user->getUser( $this->session->userdata('user_id') );
+      $this->load->view("_user/_template/header1");
+    //   $this->load->view("_user/_template/sidebar_menu");
+          $this->load->view("_user/_template/content",$data);
+      $this->load->view("_user/_template/footer");  
   }
 }
