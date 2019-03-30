@@ -7,9 +7,9 @@ class M_data_uji_normalized extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
-    public function create( $data_testing )
+    public function create( $data_uji )
     {
-        return $this->db->insert_batch('data_uji_normalized', $data_testing);
+        return $this->db->insert_batch('data_uji_normalized', $data_uji);
     }
     public function read( $data_id = -1, $mode = "object" )
     {
@@ -27,13 +27,33 @@ class M_data_uji_normalized extends CI_Model{
         else
             return $query = $this->db->query($sql)->result();
     }
-    public function update( $data_testing, $data_testing_param )
+    public function read_single_table( $data_id = -1, $mode = "object" )
     {
-        return  $this->db->update('data_uji_normalized', $data_testing, $data_testing_param);
+        $sql = "
+            SELECT a.* from data_uji_normalized a
+        ";
+        if( $data_id != -1 ){
+            $sql .= "
+                where a.data_id = '$data_id'
+            ";  
+        }
+        if( $mode == "array" )
+            return $query = $this->db->query($sql)->result_array();
+        else
+            return $query = $this->db->query($sql)->result();
     }
-    public function delete(  $data_testing_param )
+    public function update( $data_uji, $data_uji_param )
     {
-        return $this->db->delete( "data_uji_normalized" , $data_testing_param);
+        return  $this->db->update('data_uji_normalized', $data_uji, $data_uji_param);
+    }
+    public function _update_batch( $data_uji )
+    {
+        return $this->db->update_batch('data_uji_normalized',$data_uji, 'data_id');
+    }
+    
+    public function delete(  $data_uji_param )
+    {
+        return $this->db->delete( "data_uji_normalized" , $data_uji_param);
     }
     public function clear(   )
     {

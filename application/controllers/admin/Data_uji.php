@@ -237,7 +237,7 @@ class Data_uji extends Admin_Controller {
   {
         // if( !($_POST) ) redirect(site_url('admin/data_uji'));  
 
-        $data_uji = $this->m_data_uji_normalized->read( -1, "array" );
+        $data_uji = $this->m_data_uji_normalized->read_single_table( -1, "array" );
         $data_testing = $this->m_data_testing_normalized->read( -1, "array" );
 
         $min_max = $this->m_data_testing->get_min_max( );
@@ -247,35 +247,68 @@ class Data_uji extends Admin_Controller {
             return;
         }
         // echo json_encode( $data_testing );
-        $DISTANCES = array(
-        );
+        $DISTANCES = array();
+
         for( $i=0; $i< count( $data_uji ); $i++ )
         {
             for( $j=0; $j< count( $data_testing ); $j++ )
             {
-                $dist['distances'] = $this->distance($data_uji[ $i ], $data_testing[ $j ] );
+                $dist['distances'] = $this->distance( $data_uji[ $i ], $data_testing[ $j ] );
                 $dist['data_label'] = $data_testing[ $j ]['data_label'];
-                // $dist= "a";
-                // echo json_encode( $dist ).'<br>';
+                echo json_encode( $dist ).'<br>' ;
+                
                 array_push($DISTANCES , $dist) ;
             }
             sort($DISTANCES);//mengurutkan distance dari terdekat
-            echo json_encode( $DISTANCES ).'<br>';
+            // echo json_encode( $DISTANCES ).'<br>' ;
 
             $K_VALUE = $this->input->post('k_value');
             $NEIGHBOUR = array();
-            for( $i=0; $i< $K_VALUE ; $i++ )
+            for( $k=0; $k< $K_VALUE ; $k++ ) //memetakan tetangga
             {
-                if( !isset( $NEIGHBOUR[ $DISTANCES[ $i ]['data_label'] ] ) )
-                    $NEIGHBOUR[ $DISTANCES[ $i ]['data_label'] ] = array();
+                if( !isset( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] ) )
+                    $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] = array();
                 
-                array_push($NEIGHBOUR[ $DISTANCES[ $i ]['data_label'] ] , $DISTANCES[ $i ]) ;
-                // $NEIGHBOUR[ $DISTANCES[ $i ]['data_label'] ] = $DISTANCES[ $i ] ;
+                array_push( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] , $DISTANCES[ $k ]) ;
             }
-            echo json_encode( $NEIGHBOUR );
+            // echo 'NEIGHBOUR'.json_encode( $NEIGHBOUR ).'<br>' ;
+            
 
+            $terbesar =  array();
+            foreach(array_keys($NEIGHBOUR) as $paramName)
+            {
+                
+                if(  count( $NEIGHBOUR[ $paramName ] )  > count( $terbesar ) )
+                {
+                    $terbesar = $NEIGHBOUR[ $paramName ];
+                    echo json_encode( $terbesar ).'<br>' ;
+                }
+            }
+            // echo 'terbesar'.json_encode( $terbesar ).'<br>' ;
+            
+            $data_uji[ $i ]['data_label'] = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
         }
-        
+
+        // echo json_encode( $data_uji ).'<br>' ;
+        // $this->m_data_uji_normalized->_update_batch( $data_uji );
+        // $this->m_data_uji->_update_batch( $data_uji );
+
+        if(  $this->m_data_uji_normalized->_update_batch( $data_uji ) )
+        {
+            $this->session->set_flashdata('info', array(
+                'from' => 1,
+                'message' =>  'item berhasil di di uji'
+              ));
+              redirect(site_url('admin/data_uji'));
+              return;
+        }else{
+            $this->session->set_flashdata('info', array(
+                'from' => 0,
+                'message' =>  'terjadi kesalahan saat menguji data'
+              ));
+              redirect(site_url('admin/data_uji'));
+        }
+
   }
 
     //   fungsi untuk menghitung jarak

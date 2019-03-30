@@ -40,6 +40,10 @@ class M_data_uji extends CI_Model{
     {
         return  $this->db->update('data_uji', $data_uji, $data_uji_param);
     }
+    public function _update_batch( $data_uji )
+    {
+        return $this->db->update_batch('data_uji' , $data_uji, 'data_id');
+    }
     public function delete(  $data_uji_param )
     {
         return $this->db->delete( "data_uji" , $data_uji_param);

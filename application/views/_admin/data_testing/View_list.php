@@ -87,7 +87,7 @@
                             <?php echo $file->data_UKT ?>
                         </td>
                         <td>
-                            <?php echo $file->data_label ?>
+                            <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td>
                         <td>
                             <a href="<?php echo site_url('admin/data_testing/edit/').$file->data_id;?>" class="btn-sm btn-primary">Edit</a>
@@ -156,7 +156,7 @@
                             <?php echo $file->data_UKT ?>
                         </td>
                         <td>
-                            <?php echo $file->data_label ?>
+                            <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td>
                       </tr>
                     <?php 

@@ -82,7 +82,7 @@
                             <?php echo $file->data_UKT ?>
                         </td>
                         <!-- <td>
-                            <?php echo $file->data_label ?>
+                            <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td> -->
                       </tr>
                     <?php 
@@ -146,7 +146,7 @@
                             <?php echo $file->data_UKT ?>
                         </td>
                         <td>
-                            <?php echo $file->data_label ?>
+                            <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td>
                       </tr>
                     <?php 
