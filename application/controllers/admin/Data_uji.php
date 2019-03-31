@@ -311,7 +311,7 @@ class Data_uji extends Admin_Controller {
 
   }
 
-    //   fungsi untuk menghitung jarak
+//   fungsi untuk menghitung jarak
   private function distance($data_uji, $data_testing )
   {     
         $attrs = array(
