@@ -11,6 +11,8 @@ class Home extends Admin_Controller {
     $this->load->model("m_register");
     $this->load->model("m_admin");
     $this->load->model("m_user");
+    $this->load->model("m_data_uji");
+    $this->load->model("m_data_testing");
     $this->load->model("m_log");
     $this->load->helper('array');
     $this->load->library("pagination");
@@ -26,7 +28,8 @@ class Home extends Admin_Controller {
       $log['log_message'] .= "true";
       $this->m_log->inserLog( $log );
     //   $data=$this->m_kost->getData( $this->session->userdata('user_id') );
-    //   $data['files'] = $data;
+      $data['data_testing_count'] = $this->m_data_testing->count() ;
+      $data['data_uji_count'] = $this->m_data_uji->count() ;
       $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') )[0];
       $this->load->view("_admin/_template/header");
       $this->load->view("_admin/_template/sidebar_menu");

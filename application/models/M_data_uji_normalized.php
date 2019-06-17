@@ -14,7 +14,7 @@ class M_data_uji_normalized extends CI_Model{
     public function read( $data_id = -1, $mode = "object" )
     {
         $sql = "
-            SELECT a.*, b.* from data_uji_normalized a
+            SELECT a.*, b.user_profile_fullname from data_uji_normalized a
             left join user_profile b on b.user_id = a.user_id
         ";
         if( $data_id != -1 ){
@@ -30,7 +30,7 @@ class M_data_uji_normalized extends CI_Model{
     public function read_single_table( $data_id = -1, $mode = "object" )
     {
         $sql = "
-            SELECT a.* from data_uji_normalized a
+            SELECT a.* from data_uji_normalized a 
         ";
         if( $data_id != -1 ){
             $sql .= "

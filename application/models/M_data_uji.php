@@ -48,4 +48,8 @@ class M_data_uji extends CI_Model{
     {
         return $this->db->delete( "data_uji" , $data_uji_param);
     }
+    public function count(  )
+    {
+        return $this->db->count_all("data_uji");
+    }
 }

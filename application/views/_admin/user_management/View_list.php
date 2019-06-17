@@ -56,7 +56,7 @@
                     <tbody>
                     <?php 
                     $no =1;
-
+                    // $users = array();
                     foreach( $users as $user ):
                     ?>
                     <tr <?php if($user->user_status == 0) echo "style='background-color: #f7c8c8 !important'" ?>>
@@ -64,24 +64,25 @@
                             <?php echo $no?>
                         </td>
                     <td>
-                            <?php echo $user->user_username?>
+                            <?php echo $user->user_username ?>
                         </td>
                         <td>
-                            <?php echo $user->user_profile_fullname?>
+                            <?php echo $user->user_profile_fullname ?>
                         </td>
                         <td>
-                            <?php echo $user->user_profile_address?>
+                            <?php echo $user->user_profile_address ?>
                         </td>
                         <td>
-                            <?php echo $user->user_profile_email?>
+                            <?php echo $user->user_profile_email ?>
                         </td>
                         <td>
-                            <?php echo $user->user_profile_phone?>
+                            <?php echo $user->user_profile_phone ?>
                         </td>
                         <td>
-                            <button class="btn btn-white btn-info btn-bold btn-xs" data-toggle="modal" data-target="#editModal<?php echo $user->user_id;?>">
+                            <!-- <button class="btn btn-white btn-info btn-bold btn-xs" data-toggle="modal" data-target="#editModal<?php echo $user->user_id;?>">
                                 <i class="ace-icon fa fa-edit bigger-120 blue"></i>
-                            </button>
+                            </button> -->
+                            <a href="<?php echo site_url('admin/user_management/index/').$user->user_id;?>" class="btn-sm btn-primary">Detail</a>
                             <button class="btn btn-white btn-danger btn-bold btn-xs" data-toggle="modal" data-target="#deleteModal<?php echo $user->user_id?>">
                                 <i class="ace-icon fa fa-trash bigger-120 red"></i>
                             </button>

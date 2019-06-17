@@ -72,7 +72,7 @@ class Data_testing extends Admin_Controller {
                     $data_test["data_semester"] = $this->input->post('data_semester')[$ind] ;
                     $data_test["data_IPK"] = $this->input->post('data_IPK')[$ind] ;
                     $data_test["data_gaji_ortu"] = $this->input->post('data_gaji_ortu')[$ind] ;
-                    $data_test["data_UKT"] = $this->input->post('data_UKT')[$ind] ;
+                    $data_test["data_UKT"] = $this->input->post('data_UKT')[$ind];
                     $data_test["data_tanggungan"] = $this->input->post('data_tanggungan')[$ind] ;
                     $data_test["data_label"] = $this->input->post('data_label')[$ind] ;
 

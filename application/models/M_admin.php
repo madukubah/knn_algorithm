@@ -7,14 +7,21 @@ class M_admin extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
-    public function getData(){
-        $userid = $this->session->userdata('user_id');
+    
+    public function read( $user_id = -1 )
+    {
         $sql = "
-            SELECT a.*, b.* FROM user_profile a
-            LEFT JOIN user b ON b.user_id = a.user_id
-            WHERE b.user_level != 1
-
+        SELECT  a.*, b.*, c.* FROM user_profile a 
+        LEFT JOIN user b ON b.user_id = a.user_id 
+        LEFT JOIN data_uji c ON c.user_id = b.user_id 
+        WHERE b.user_level != 1 
         ";
+        if( $user_id != -1 ){
+            $sql .= "
+                and b.user_id = '$user_id'
+            ";  
+        }
+        // $sql .= " GROUP BY b.user_id ";
         return $this->db->query( $sql )->result();
     }
 
@@ -29,116 +36,10 @@ class M_admin extends CI_Model{
 
     }
 
-    public function editUserAPI( $data_user , $data_user_profile)
-    {
-        $user_id = $data_user['user_id'];
-        $this->db->update('user_profile', $data_user_profile, array(
-            'user_id' => $data_user['user_id']
-        ));
-
-        $this->db->update('user', $data_user, array(
-            'user_id' => $data_user['user_id']
-        ));
-
-        $sql = "
-
-            SELECT a.*, b.user_status , b.user_level , b.user_id, b.user_username
-            from user_profile a
-            LEFT JOIN user b on b.user_id = a.user_id
-            WHERE b.user_id = '$user_id'
-
-        ";
-
-        return $this->db->query( $sql )->result();
-
-    }
-
     public function deleteUser( $data_user_param )
     {
         $this->db->delete( "data_uji" , $data_user_param );
         $this->db->delete( "user_profile" , $data_user_param );
         return $this->db->delete( "user" , $data_user_param );
-    }
-
-    // FACILITIES
-    public function get_facility(  )
-    {
-        $sql = "
-        SELECT * FROM `facility`
-        ";
-        return $query = $this->db->query($sql)->result();
-    }
-    public function create_facility( $data_facility )
-    {
-        return $this->db->insert('facility', $data_facility);
-    }
-    public function update_facility( $data_facility )
-    {
-        return  $this->db->update('facility', $data_facility, array(
-            'facility_id' => $data_facility['facility_id']
-        ));
-    }
-    public function delete_facility( $data_facility )
-    {       
-        return $this->db->delete( "facility" , array(
-            'facility_id' => $data_facility['facility_id']
-        )); 
-    }
-
-    // MOBILE_VERSION
-    public function get_mobile(  )
-    {
-        $sql = "
-        SELECT * FROM `mobile`
-        ";
-        return $query = $this->db->query($sql)->result();
-    }
-    public function get_mobile_pemilik(  )
-    {
-        $sql = "
-        SELECT * FROM `mobile_pemilik`
-        ";
-        return $query = $this->db->query($sql)->result();
-    }
-    
-    public function update_mobile( $data_mobile )
-    {
-        return  $this->db->update('mobile', $data_mobile, array(
-            'mobile_id' => $data_mobile['mobile_id']
-        ));
-    }
-
-    public function update_mobile_pemilik( $data_mobile )
-    {
-        return  $this->db->update('mobile_pemilik', $data_mobile, array(
-            'mobile_pemilik_id' => $data_mobile['mobile_pemilik_id']
-        ));
-    }
-  
-    // ADVERTISEMENT
-   public function get_Advertisement(  )
-    {
-        $sql = "
-        SELECT * FROM `advertise`
-        ";
-        return $query = $this->db->query($sql)->result();
-    }
-    public function create_Advertisement( $data_advertise )
-    {
-        return $this->db->insert('advertise', $data_advertise);
-    }
-
-    public function update_Advertisement( $data_advertise )
-    {
-        return  $this->db->update('advertise', $data_advertise, array(
-            'advertise_id' => $data_advertise['advertise_id']
-        ));
-    }
-
-    public function delete_Advertisement( $data_advertise )
-    {       
-        return $this->db->delete( "advertise" , array(
-            'advertise_id' => $data_advertise['advertise_id']
-        )); 
     }
 }

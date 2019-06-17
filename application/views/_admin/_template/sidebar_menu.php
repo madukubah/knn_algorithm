@@ -24,9 +24,9 @@
   );
 
   $admin = array(
-    'menuId' => "admin",
+    'menuId' => "user_management",
     'menuName' => "User Management",
-    'menuPath' => site_url("admin/admin"),
+    'menuPath' => site_url("admin/user_management"),
     'menuIcon' => 'fa fa-times'
   );
   $log = array(

@@ -20,35 +20,34 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>44</h3>
+          <h3><?php echo $data_testing_count ?></h3>
 
-          <p>Pendaftar</p>
+          <p>Data Testing</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="ion ion-person"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?php echo site_url("admin/data_testing") ?>" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-green">
+      <div class="small-box bg-primary">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px"></sup></h3>
+          <h3><?php echo $data_uji_count ?><sup style="font-size: 20px"></sup></h3>
 
-          <p>Diterima</p>
+          <p>Data Uji</p>
         </div>
         <div class="icon">
-          <i class="fa fa-check"></i>
+          <i class="ion ion-person"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?php echo site_url("admin/data_uji") ?>" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     
     <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
+    <!-- <div class="col-lg-3 col-xs-6">
       <div class="small-box bg-red">
         <div class="inner">
           <h3>65</h3>
@@ -60,7 +59,7 @@
         </div>
         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
-    </div>
+    </div> -->
     <!-- ./col -->
   </div>
   </section>

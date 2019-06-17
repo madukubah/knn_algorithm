@@ -51,7 +51,7 @@
                     <th>Gaji Orang Tua</th>
                     <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
-                    <!-- <th>Label</th> -->
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -81,9 +81,6 @@
                         <td>
                             <?php echo $file->data_UKT ?>
                         </td>
-                        <!-- <td>
-                            <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
-                        </td> -->
                       </tr>
                     <?php 
                       $no++;
@@ -116,6 +113,7 @@
                     <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,6 +146,39 @@
                         <td>
                             <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td>
+                        <td>
+                            <!-- <a href="<?php echo site_url('admin/data_uji/uji/').$file->data_id;?>" class="btn btn-sm btn-success">Uji</a> -->
+                            <button type="submit" class=" btn btn-sm btn-success" data-toggle="modal" data-target="#uji<?php echo $file->data_id ?>" >
+                                    Uji 
+                            </button>  
+                            <!-- modal -->
+                            <div class="modal fade" id="uji<?php echo $file->data_id ?>" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"><b>Uji KNN </b></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                        <?php echo form_open_multipart( "admin/data_uji/uji" ) ;?>
+                                            <div class="form-group">
+                                                <label for="">Nilai K </label>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                    <input type="number" class="form-control"  name="k_value" value="1" min="1" max="<?php echo count( $data_testing ) ?>" required="required">
+                                                    <input type="hidden" class="form-control"  value="<?php echo $file->data_id ?>" name="data_id" required="required" readonly >
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">UJI</button>
+                                        </div>
+                                        
+                                        <?php echo form_close(); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal -->
+                        </td>
                       </tr>
                     <?php 
                       $no++;
@@ -166,12 +197,12 @@
                     <h4 class="modal-title"><b>Uji KNN </b></h4>
                 </div>
                 <div class="modal-body">
-                <?php echo form_open_multipart( "admin/data_uji/uji" ) ;?>
+                <?php echo form_open_multipart( "admin/data_uji/uji_batch" ) ;?>
                     <div class="form-group">
                         <label for="">Nilai K </label>
                         <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
-                            <input type="number" class="form-control"  name="k_value" required="required">
+                                <input type="number" class="form-control"  name="k_value" value="1" min="1" max="<?php echo count( $data_testing ) ?>" required="required">
                             </span>
                         </label>
                     </div>
@@ -188,7 +219,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <button type="submit" class="pull-right btn btn-sm btn-success" data-toggle="modal" data-target="#ujiKnn" >
-                            Uji KNN
+                            Uji Keseluruhan
                     </button>  
                     
                 </div>

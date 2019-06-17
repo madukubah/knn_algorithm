@@ -15,7 +15,7 @@
   <section class="content">
     <?php echo form_open_multipart();?>
     <?php 
-        $a = array( 1, 1, 1, 1);
+        $a = array( 1,1);
         $ind = 0;
         foreach( $a as $d ):
     ?>

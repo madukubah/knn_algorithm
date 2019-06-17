@@ -31,6 +31,10 @@ class M_data_testing extends CI_Model{
     {
         return $this->db->delete( "data_testing" , $data_testing_param);
     }
+    public function count(  )
+    {
+        return $this->db->count_all("data_testing");
+    }
 
     public function get_min_max(  )
     {
