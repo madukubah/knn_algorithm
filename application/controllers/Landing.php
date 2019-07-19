@@ -64,6 +64,14 @@ class Landing extends CI_Controller {
                         'from' => 1,
                         'message' =>  'Data berhasil di input'
                       ));
+                      // is_admin
+                      if(
+                        ($this->session->userdata('user_id')) || 
+                        $this->session->userdata('user_level') == 1
+                      )
+                      {
+                        redirect(site_url('admin/user_management'));
+                      }
                       redirect(site_url('landing'));
                       return;
                 }

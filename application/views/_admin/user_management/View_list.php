@@ -37,6 +37,10 @@
     <div class="box">
         <div class="box-header">
           <h3 class="box-title"><?php echo $page_name ?></h3>
+          <br>
+          <br>
+          <a href="<?php echo site_url('landing/add_biodata');?>" class="btn-sm btn-primary">Tambah Data</a>
+          <a href="<?php echo site_url('admin/data_uji/import');?>" class="btn-sm btn-success">Import Data Peserta</a>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -45,8 +49,8 @@
                     <thead class="thin-border-bottom">
                     <tr >
                         <th style="width:50px">No</th>
-                        <th>Username</th>
-                        <th>Full Name</th>
+                        <!-- <th>Username</th> -->
+                        <th>Nama Lengkap</th>
                         <th>Alamat</th>
                         <th>Email</th>
                         <th>no HP</th>
@@ -63,9 +67,9 @@
                         <td>
                             <?php echo $no?>
                         </td>
-                    <td>
+                    <!-- <td>
                             <?php echo $user->user_username ?>
-                        </td>
+                        </td> -->
                         <td>
                             <?php echo $user->user_profile_fullname ?>
                         </td>
@@ -177,7 +181,7 @@
                             <div class="modal-dialog">
                             <!-- Modal content-->
                             <div class="modal-content">
-                                <?php echo form_open("admin/admin/deleteUser");?>
+                                <?php echo form_open("admin/user_management/deleteUser");?>
                                 <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">#Delete Image</h4>

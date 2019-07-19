@@ -10,7 +10,8 @@ class User_management extends Admin_Controller {
     $this->load->model("m_log");
     $this->load->library("pagination");
   }
-  public function index( $user_id = -1 ) {
+  public function index( $user_id = -1 ) 
+  {
         $data['page_name'] = "User Management";
         // $data['users'] = $this->m_admin->read( $user_id );
         
@@ -77,12 +78,9 @@ class User_management extends Admin_Controller {
     }else{
         $this->session->set_flashdata('info', array(
           'from' => 0,
-
           'message' =>  "terjadi kesalahan saat menghapus data",
-
         ));
         redirect(site_url('admin/user_management'));
-
     }
 
   }

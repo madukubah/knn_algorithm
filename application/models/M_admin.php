@@ -11,7 +11,7 @@ class M_admin extends CI_Model{
     public function read( $user_id = -1 )
     {
         $sql = "
-        SELECT  a.*, b.*, c.* FROM user_profile a 
+        SELECT  a.*, b.*, c.* , b.user_id as user_id FROM user_profile a 
         LEFT JOIN user b ON b.user_id = a.user_id 
         LEFT JOIN data_uji c ON c.user_id = b.user_id 
         WHERE b.user_level != 1 
@@ -33,12 +33,12 @@ class M_admin extends CI_Model{
         return  $this->db->update('user', $data_user, array(
             'user_id' => $data_user['user_id']
         ));
-
     }
 
     public function deleteUser( $data_user_param )
     {
         $this->db->delete( "data_uji" , $data_user_param );
+        $this->db->delete( "data_uji_normalized" , $data_user_param );
         $this->db->delete( "user_profile" , $data_user_param );
         return $this->db->delete( "user" , $data_user_param );
     }

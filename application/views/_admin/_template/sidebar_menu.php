@@ -25,9 +25,9 @@
 
   $admin = array(
     'menuId' => "user_management",
-    'menuName' => "User Management",
+    'menuName' => "Data Peserta",
     'menuPath' => site_url("admin/user_management"),
-    'menuIcon' => 'fa fa-times'
+    'menuIcon' => 'fa fa-users'
   );
   $log = array(
     'menuId' => "log",

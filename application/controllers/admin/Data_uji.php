@@ -35,12 +35,112 @@ class Data_uji extends Admin_Controller {
       $data['files'] = $this->m_data_uji->read(  );
       $data['files_normalized'] = $this->m_data_uji_normalized->read(  );
       $data['data_testing']  = $this->m_data_testing_normalized->read(  );
+
+      $data['data_uji_count'] = $this->m_data_uji->record_count(  );
+      $data['data_uji_normalized_count'] = $this->m_data_uji_normalized->record_count(  );
+
       $this->load->view("_admin/_template/header");
       $this->load->view("_admin/_template/sidebar_menu");
           $this->load->view("_admin/data_uji/View_list",$data);
       $this->load->view("_admin/_template/footer");  
   }
 
+  public function rangking(  )
+  {
+    $data['files']  = $this->m_data_uji_normalized->rangking(  );
+    // echo json_encode( $data['files'] );return;
+    $data['page_name'] = "Perengkingan";
+
+    $this->load->view("_admin/_template/header");
+      $this->load->view("_admin/_template/sidebar_menu");
+          $this->load->view("_admin/data_uji/View_rangking",$data);
+      $this->load->view("_admin/_template/footer");  
+  }
+  public function import(  )
+  {
+    $data['page_name'] = "import Data Peserta";
+    // if( !($_POST) ) redirect(site_url(''));  
+
+    $this->load->library('upload'); // Load librari upload
+    $filename = "excel";
+    $config['upload_path'] = './upload/datatestingexcel/';
+    $config['allowed_types'] = "xls|xlsx";
+    $config['overwrite']="true";
+    $config['max_size']="2048";
+    $config['file_name'] = ''.$filename;
+    $this->upload->initialize($config);
+
+    if( $this->upload->do_upload("document_file") )
+    {  
+        $filename = $this->upload->data()["file_name"];
+        // echo $filename;
+        // Load plugin PHPExcel nya
+        include APPPATH.'third_party/PHPExcel.php';
+        
+        $excelreader = new PHPExcel_Reader_Excel2007();
+        $loadexcel = $excelreader->load('upload/datatestingexcel/'.$filename); // Load file yang telah diupload ke folder excel
+        $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+        
+        // Buat sebuah vari
+        $__data_uji = array();
+        $numrow = 1;
+        foreach($sheet as $row){
+            // Cek $numrow apakah lebih dari 1
+            // Artinya karena baris pertama adalah nama-nama kolom
+            // Jadi dilewat saja, tidak usah diimport
+            if($numrow > 1 &&  !empty( $row['A'] ) ){
+                // $data_uji["data_name"] = $row['A'] ;
+                $data_uji["data_IPK"] = $row['B'];
+                $data_uji["data_semester"] = $row['C'];
+                $data_uji["data_gaji_ortu"] = $row['D'];
+                $data_uji["data_tanggungan"] = $row['E'];
+                $data_uji["data_UKT"] = $row['F'];
+                $data_uji["data_label"] = -1;
+                ##########################################################
+                $data_profile["user_profile_fullname"] = $row['A'];
+                $data_profile["user_profile_address"] = $row['G'];
+                $data_profile["user_profile_email"] = $row['H'];
+                $data_profile["user_profile_phone"] = $row['I'];
+                //add user
+                $identitas = time();
+                $data_user['user_username'] = $identitas + $numrow;
+                $data_user['user_password'] = md5( $identitas );
+                $result = $this->m_register->register($data_user, $data_profile);
+                if( $result['status'] ){
+                    $data_uji["user_id"] = $result['message']['user_id'];
+                    // Kita push (add) array data ke variabel data
+                    array_push($__data_uji, $data_uji ) ;
+                }
+            }
+            
+            $numrow++; // Tambah 1 setiap kali looping
+        }
+
+        // echo json_encode( $__data_uji );
+        // return;
+        if( $this->m_data_uji->create( $__data_uji ) ){
+            $this->session->set_flashdata('info', array(
+                'from' => 1,
+                'message' =>  'item berhasil diimport'
+              ));
+              redirect(site_url('admin/data_uji'));
+              return;
+        }
+        $this->session->set_flashdata('info', array(
+            'from' => 0,
+            'message' =>  'terjadi kesalahan saat mengirim data'
+          ));
+          redirect(site_url('admin/user_management'));
+
+    }else{
+        // echo  $this->upload->display_errors();
+        $this->load->view("_admin/_template/header");
+        $this->load->view("_admin/_template/sidebar_menu");
+            $this->load->view("_admin/data_uji/View_import",$data);
+        $this->load->view("_admin/_template/footer");  
+    }
+
+  }
 
   public function normalize(  )
   {
@@ -270,7 +370,7 @@ class Data_uji extends Admin_Controller {
 
   }
 
-//   fungsi untuk menghitung jarak
+    //   fungsi untuk menghitung jarak
   private function distance($data_uji, $data_testing )
   {     
         $attrs = array(

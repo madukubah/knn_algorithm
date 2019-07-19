@@ -218,10 +218,15 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-xs-12">
+                    <?php if( $data_uji_count == $data_uji_normalized_count )  :  ?>
+                    <a target="_blank" href="<?php echo site_url( '/admin/data_uji/rangking' ) ?>" class="pull-right btn btn-sm btn-primary"  >
+                            Rangking
+                    </a>   
+                <?php endif; ?>
+                    <!-- &nbsp -->
                     <button type="submit" class="pull-right btn btn-sm btn-success" data-toggle="modal" data-target="#ujiKnn" >
                             Uji Keseluruhan
                     </button>  
-                    
                 </div>
             </div>
         </div>

@@ -24,6 +24,10 @@ class M_data_uji extends CI_Model{
         }
         return $query = $this->db->query($sql)->result();
     }
+    public function record_count(  )
+    {
+        return $this->db->count_all( 'data_uji' );
+    }
     public function read_normalize( $data_id = -1 )
     {
         $sql = "

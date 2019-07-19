@@ -27,6 +27,32 @@ class M_data_uji_normalized extends CI_Model{
         else
             return $query = $this->db->query($sql)->result();
     }
+
+    public function rangking( $data_id = -1, $mode = "object" )
+    {
+        $sql = "
+            SELECT a.*, b.user_profile_fullname from data_uji_normalized a
+            left join user_profile b on b.user_id = a.user_id
+        ";
+        if( $data_id != -1 ){
+            $sql .= "
+                where a.data_id = '$data_id'
+            ";  
+        }
+
+        $sql .= "
+            ORDER BY
+            a.data_label DESC,
+            a.data_IPK DESC,
+            a.data_gaji_ortu ASC
+        ";  
+
+        if( $mode == "array" )
+            return $query = $this->db->query($sql)->result_array();
+        else
+            return $query = $this->db->query($sql)->result();
+    }
+
     public function read_single_table( $data_id = -1, $mode = "object" )
     {
         $sql = "
@@ -58,6 +84,12 @@ class M_data_uji_normalized extends CI_Model{
     public function clear(   )
     {
         return $query = $this->db->query( " TRUNCATE data_uji_normalized " );
+    }
+
+    public function record_count(  )
+    {   
+        $this->db->where( 'data_uji_normalized.data_label != -1',NULL );
+        return $this->db->count_all_results( 'data_uji_normalized' );
     }
 
 }
