@@ -313,6 +313,7 @@ class Data_uji extends Admin_Controller {
             {
                 $dist['distances'] = $this->distance( $data_uji[ $i ], $data_testing[ $j ] );
                 $dist['data_label'] = $data_testing[ $j ]['data_label'];
+                $dist['data_name'] = $data_testing[ $j ]['data_name'];
                 // echo json_encode( $dist ).'<br>' ;
                 
                 array_push($DISTANCES , $dist) ;
@@ -344,7 +345,8 @@ class Data_uji extends Admin_Controller {
             }
             // echo 'terbesar'.json_encode( $terbesar ).'<br>' ;
             
-            $data_uji[ $i ]['data_label'] = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
+            $data_uji[ $i ]['data_label']        = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
+            $data_uji[ $i ]['tetangga_terdekat'] =  $terbesar[0]['data_name'] ."(" . $terbesar[0]['distances']  .")" ;//update nilai label (lulus / tidak lulus)
         }
 
         foreach( $data_uji  as  $ind=>$val )

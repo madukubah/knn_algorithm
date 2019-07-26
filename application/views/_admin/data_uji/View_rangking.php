@@ -52,6 +52,7 @@
                     <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>
+                    <th>Tetangga Terdekat</th>
                     
                   </tr>
                 </thead>
@@ -84,6 +85,9 @@
                         </td>
                         <td>
                             <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
+                        </td>
+                        <td>
+                            <?php echo  ( $file->tetangga_terdekat)  ?>
                         </td>
                       </tr>
                     <?php 
