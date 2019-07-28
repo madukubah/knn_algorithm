@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2019 at 10:32 AM
+-- Generation Time: Jul 28, 2019 at 11:44 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -116,7 +116,8 @@ INSERT INTO `data_uji` (`data_id`, `user_id`, `data_semester`, `data_IPK`, `data
 (6, 7, 5, 2.65, 3995000, 2940000, 4, -1),
 (7, 8, 6, 2.93, 2560000, 3610000, 5, -1),
 (8, 9, 4, 2.7, 3550000, 3710000, 7, -1),
-(9, 10, 5, 2.66, 2860000, 3070000, 1, -1);
+(9, 10, 5, 2.66, 2860000, 3070000, 1, -1),
+(10, 11, 6, 3.64, 1000000, 250000, 5, -1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,8 @@ INSERT INTO `data_uji_normalized` (`data_id`, `user_id`, `data_semester`, `data_
 (6, 7, 0.6667, -0.5625, 0.7488, 1.0235, 0.5, 0, 'I(1.295013)'),
 (7, 8, 1, -0.2125, 0.39, 1.4176, 0.6667, 1, 'C(1.168309)'),
 (8, 9, 0.3333, -0.5, 0.6375, 1.4765, 1, 1, 'D(1.629136)'),
-(9, 10, 0.6667, -0.55, 0.465, 1.1, 0, 1, 'E(1.207866)');
+(9, 10, 0.6667, -0.55, 0.465, 1.1, 0, 0, 'I(1.341166)'),
+(10, 11, 1, 0.675, 0, -0.5588, 0.6667, 0, 'F(0.912164)');
 
 -- --------------------------------------------------------
 
@@ -1757,7 +1759,19 @@ INSERT INTO `log` (`log_id`, `log_datetime`, `log_message`, `user_id`) VALUES
 (1584, '2019-07-26 10:28:58', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
 (1585, '2019-07-26 10:29:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
 (1586, '2019-07-26 10:31:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
-(1587, '2019-07-26 10:32:04', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1);
+(1587, '2019-07-26 10:32:04', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1588, '0000-00-00 00:00:00', 'true', 1),
+(1589, '2019-07-27 15:37:46', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1590, '2019-07-27 15:37:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1591, '2019-07-27 15:39:03', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1592, '2019-07-27 15:39:08', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1593, '2019-07-27 15:39:23', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1594, '2019-07-27 15:40:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1595, '2019-07-27 15:40:46', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1596, '2019-07-27 15:41:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1597, '2019-07-27 15:41:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1598, '2019-07-27 15:44:55', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1599, '2019-07-27 15:45:18', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1);
 
 -- --------------------------------------------------------
 
@@ -1788,7 +1802,8 @@ INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_status`, 
 (7, '1564128369', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
 (8, '1564128370', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
 (9, '1564128371', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(10, '1564128372', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26');
+(10, '1564128372', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
+(11, '1564234832', 'b781419b2f5389352e9c4d1feb601148', 1, 2, '2019-07-27');
 
 -- --------------------------------------------------------
 
@@ -1820,6 +1835,7 @@ INSERT INTO `user_profile` (`user_id`, `user_profile_fullname`, `user_profile_ad
 (8, 'G', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
 (9, 'H', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
 (10, 'I', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
+(11, 'udin', 'atarbia', '', '', '086553246637'),
 (55, 'A', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
 (56, 'B', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
 (57, 'C', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
@@ -1896,25 +1912,25 @@ ALTER TABLE `data_testing_normalized`
 -- AUTO_INCREMENT for table `data_uji`
 --
 ALTER TABLE `data_uji`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `data_uji_normalized`
 --
 ALTER TABLE `data_uji_normalized`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1588;
+  MODIFY `log_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1600;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
