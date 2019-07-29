@@ -9,8 +9,33 @@ class M_data_uji extends CI_Model{
     }
     public function create( $data_uji )
     {
-        return $this->db->insert_batch('data_uji', $data_uji);
+        // return $this->db->insert_batch('data_uji', $data_uji);
+        $data_uji = $this->_filter_data( 'data_uji' , $data_uji);
+        
+        return $this->db->insert('data_uji', $data_uji);
     }
+
+    /**
+	 * @param string $table
+	 * @param array  $data
+	 *
+	 * @return array
+	 */
+	protected function _filter_data($table, $data)
+	{
+		$filtered_data = array();
+		$columns = $this->db->list_fields($table);
+
+		if (is_array($data))
+		{
+			foreach ($columns as $column)
+			{
+				if (array_key_exists($column, $data))
+					$filtered_data[$column] = $data[$column];
+			}
+		}
+		return $filtered_data;
+	}
     public function read( $data_id = -1 )
     {
         $sql = "

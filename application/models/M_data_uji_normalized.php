@@ -52,7 +52,7 @@ class M_data_uji_normalized extends CI_Model{
         else
             return $query = $this->db->query($sql)->result();
     }
-
+    
     public function read_single_table( $data_id = -1, $mode = "object" )
     {
         $sql = "
@@ -70,13 +70,35 @@ class M_data_uji_normalized extends CI_Model{
     }
     public function update( $data_uji, $data_uji_param )
     {
+        // echo var_dump( $data_uji );return;
+        $data_uji = $this->_filter_data( 'data_uji_normalized' , $data_uji);
         return  $this->db->update('data_uji_normalized', $data_uji, $data_uji_param);
     }
     public function _update_batch( $data_uji )
     {
         return $this->db->update_batch('data_uji_normalized',$data_uji, 'data_id');
     }
-    
+    /**
+	 * @param string $table
+	 * @param array  $data
+	 *
+	 * @return array
+	 */
+	protected function _filter_data($table, $data)
+	{
+		$filtered_data = array();
+		$columns = $this->db->list_fields($table);
+
+		if (is_array($data))
+		{
+			foreach ($columns as $column)
+			{
+				if (array_key_exists($column, $data))
+					$filtered_data[$column] = $data[$column];
+			}
+		}
+		return $filtered_data;
+	}
     public function delete(  $data_uji_param )
     {
         return $this->db->delete( "data_uji_normalized" , $data_uji_param);

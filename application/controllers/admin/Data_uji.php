@@ -372,6 +372,107 @@ class Data_uji extends Admin_Controller {
 
   }
 
+  public function uji_batch_2(  )
+  {
+        if( !($_POST) ) redirect(site_url('admin/data_uji'));  
+
+        // $data_uji = $this->m_data_uji_normalized->read_single_table( -1, "array" );
+        $data_uji = $this->m_data_uji_normalized->read( -1, "array" );
+        $data_testing = $this->m_data_testing_normalized->read( -1, "array" );
+
+        $min_max = $this->m_data_testing->get_min_max( );
+        // echo json_encode( $data_testing ).'<br>' ;
+        // return;
+
+        if(  empty( $data_uji ) || empty( $data_testing ) ) {
+            redirect(site_url('admin/data_uji'));
+            return;
+        }
+        // echo json_encode( $data_testing );
+        
+
+        for( $i=0; $i< count( $data_uji ); $i++ )
+        {
+            $DISTANCES = array();
+            for( $j=0; $j< count( $data_testing ); $j++ )
+            {
+                $dist['distances'] = $this->distance( $data_uji[ $i ], $data_testing[ $j ] );
+                $dist['data_label'] = $data_testing[ $j ]['data_label'];
+                $dist['data_name'] = $data_testing[ $j ]['data_name'];
+                // echo json_encode( $dist ).'<br>' ;
+                
+                array_push($DISTANCES , $dist) ;
+            }
+            sort($DISTANCES);//mengurutkan distance dari terdekat
+            // echo "DISTANCES".json_encode( $DISTANCES ).'<br>' ;
+
+            $K_VALUE = $this->input->post('k_value');
+            $NEIGHBOUR = array();
+            for( $k=0; $k< $K_VALUE ; $k++ ) //memetakan tetangga
+            {
+                if( !isset( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] ) )
+                    $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] = array();
+                
+                array_push( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] , $DISTANCES[ $k ]) ;
+            }
+            // echo 'NEIGHBOUR'.json_encode( $NEIGHBOUR ).'<br>' ;
+            
+
+            $terbesar =  array();
+            foreach(array_keys($NEIGHBOUR) as $paramName)
+            {
+                
+                if(  count( $NEIGHBOUR[ $paramName ] )  > count( $terbesar ) )
+                {
+                    $terbesar = $NEIGHBOUR[ $paramName ];
+                    // echo json_encode( $terbesar ).'<br>' ;
+                }
+            }
+            // echo 'terbesar'.json_encode( $terbesar ).'<br>' ;
+            
+            $data_uji[ $i ]['data_label']        = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
+            $data_uji[ $i ]['tetangga_terdekat'] =  $terbesar[0]['data_name'] ."(" . $terbesar[0]['distances']  .")" ;//update nilai label (lulus / tidak lulus)
+            $data_uji[ $i ]['K_VALUE']           = $K_VALUE;
+            $data_uji[ $i ]['distances']         = $DISTANCES;
+            $data_uji[ $i ]['NEIGHBOURS']         = $NEIGHBOUR;
+
+            $data_uji_param['data_id'] = $data_uji[ $i ]['data_id'];
+            $this->m_data_uji_normalized->update( $data_uji[ $i ], $data_uji_param );
+        }
+        // echo json_encode( $data_uji );
+        // echo json_encode( $data_uji );return;
+        $data['data_uji'] = $data_uji;
+
+        $data['files']  = $this->m_data_uji_normalized->rangking(  );
+        $data['data_uji'] = $data_uji;
+        $data['page_name'] = "Hasil Data Uji";
+        $this->load->view("_admin/_template/header");
+        $this->load->view("_admin/_template/sidebar_menu");
+            $this->load->view("_admin/data_uji/View_detail_uji_batch",$data);
+        $this->load->view("_admin/_template/footer");  
+        // foreach( $data_uji  as  $ind=>$val )
+        // {   
+        //     unset( $data_uji[ $ind ]['user_profile_fullname'] );
+        // }
+        // // echo json_encode( $data_uji );
+        // if(  $this->m_data_uji_normalized->_update_batch( $data_uji ) )
+        // {
+        //     $this->session->set_flashdata('info', array(
+        //         'from' => 1,
+        //         'message' =>  'item berhasil di di uji'
+        //       ));
+        //       redirect(site_url('admin/data_uji'));
+        //       return;
+        // }else{
+        //     $this->session->set_flashdata('info', array(
+        //         'from' => 0,
+        //         'message' =>  'terjadi kesalahan saat menguji data'
+        //       ));
+        //       redirect(site_url('admin/data_uji'));
+        // }
+
+  }
+
     //   fungsi untuk menghitung jarak
   private function distance($data_uji, $data_testing )
   {     

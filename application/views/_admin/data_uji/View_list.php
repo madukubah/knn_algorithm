@@ -197,7 +197,7 @@
                     <h4 class="modal-title"><b>Uji KNN </b></h4>
                 </div>
                 <div class="modal-body">
-                <?php echo form_open_multipart( "admin/data_uji/uji_batch" ) ;?>
+                <?php echo form_open_multipart( "admin/data_uji/uji_batch_2" ) ;?>
                     <div class="form-group">
                         <label for="">Nilai K </label>
                         <label class="block clearfix">
