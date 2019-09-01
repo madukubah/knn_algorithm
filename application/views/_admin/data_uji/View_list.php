@@ -214,18 +214,49 @@
         </div>
     </div>
     <!-- modal -->
+
+    <!-- modal rengking -->
+    <div class="modal fade" id="quota" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Ambil Kuota </b></h4>
+                </div>
+                <div class="modal-body">
+                <?php echo form_open_multipart( "admin/data_uji/rangking") ;?>
+                    <div class="form-group">
+                        <label for="">Kuota </label>
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="number" class="form-control"  name="quota" value="1" min="1" max="<?php echo count( $data_testing ) ?>" required="required">
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ok</button>
+                </div>
+                
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
     <div class="box">
         <div class="box-body">
             <div class="row">
                 <div class="col-xs-12">
                     <?php if( $data_uji_count == $data_uji_normalized_count )  :  ?>
-                    <a target="_blank" href="<?php echo site_url( '/admin/data_uji/rangking' ) ?>" class="pull-right btn btn-sm btn-primary"  >
+                    <!-- <a target="_blank" href="<?php echo site_url( '/admin/data_uji/rangking' ) ?>" class="pull-right btn btn-sm btn-primary"  >
                             Rangking
-                    </a>   
+                    </a>  -->
+                    <!-- <button type="submit" class="pull-right btn btn-sm btn-primary" data-toggle="modal" data-target="#quota" >
+                        Ambil Kuota
+                    </button>   -->
                 <?php endif; ?>
                     <!-- &nbsp -->
                     <button type="submit" class="pull-right btn btn-sm btn-success" data-toggle="modal" data-target="#ujiKnn" >
-                            Uji Keseluruhan
+                        Uji Keseluruhan
                     </button>  
                 </div>
             </div>

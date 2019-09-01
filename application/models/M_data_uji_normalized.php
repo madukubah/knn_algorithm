@@ -20,7 +20,7 @@ class M_data_uji_normalized extends CI_Model{
         if( $data_id != -1 ){
             $sql .= "
                 where a.data_id = '$data_id'
-            ";  
+            ";
         }
         if( $mode == "array" )
             return $query = $this->db->query($sql)->result_array();
@@ -28,7 +28,7 @@ class M_data_uji_normalized extends CI_Model{
             return $query = $this->db->query($sql)->result();
     }
 
-    public function rangking( $data_id = -1, $mode = "object" )
+    public function rangking( $data_id = -1, $mode = "object", $quota = NULL )
     {
         $sql = "
             SELECT a.*, b.user_profile_fullname from data_uji_normalized a
@@ -37,15 +37,22 @@ class M_data_uji_normalized extends CI_Model{
         if( $data_id != -1 ){
             $sql .= "
                 where a.data_id = '$data_id'
+                AND a.data_label != 0
             ";  
         }
-
         $sql .= "
             ORDER BY
             a.data_label DESC,
+            a.tetangga_terdekat ASC,
             a.data_IPK DESC,
             a.data_gaji_ortu ASC
         ";  
+
+        if( $quota != NULL ){
+            $sql .= "
+                LIMIT $quota
+            ";  
+        }
 
         if( $mode == "array" )
             return $query = $this->db->query($sql)->result_array();

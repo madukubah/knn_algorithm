@@ -29,7 +29,7 @@
             "</div>
             ";
         }
-        }
+      }
     ?>
     <!-- alert  -->
     <!-- Main content -->
@@ -52,7 +52,7 @@
                     <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>
-                    <th>Tetangga Terdekat</th>
+                    <th>X</th>
                     
                   </tr>
                 </thead>

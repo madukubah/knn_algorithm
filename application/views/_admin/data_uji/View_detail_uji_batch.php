@@ -212,7 +212,7 @@
                     <th style="background-color:green" >Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>
-                    <!-- <th>Tetangga Terdekat</th> -->
+                    <th> X </th>
                     
                   </tr>
                 </thead>
@@ -246,9 +246,9 @@
                         <td>
                             <?php echo  ( $file->data_label == 1 )? "LULUS" : ( ( $file->data_label == 0 )? "TIDAK LULUS" : "BELUM DI UJI"   )  ?>
                         </td>
-                        <!-- <td>
+                        <td>
                             <?php echo  ( $file->tetangga_terdekat)  ?>
-                        </td> -->
+                        </td>
                       </tr>
                     <?php 
                       $no++;
@@ -257,7 +257,48 @@
               </table>
           </div>   
       </div>
+
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="submit" class="pull-right btn btn-sm btn-primary" data-toggle="modal" data-target="#quota" >
+                            Ambil Kuota
+                        </button>  
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- modal rengking -->
+    <div class="modal fade" id="quota" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Ambil Kuota </b></h4>
+                </div>
+                <div class="modal-body">
+                <?php echo form_open_multipart( "admin/data_uji/rangking") ;?>
+                    <div class="form-group">
+                        <label for="">Kuota </label>
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="number" class="form-control"  name="quota" value="1" min="1"  required="required">
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ok</button>
+                </div>
+                
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
+    
     
   </section>
 </div>
