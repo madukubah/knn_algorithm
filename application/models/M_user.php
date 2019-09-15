@@ -47,4 +47,24 @@ class M_user extends CI_Model{
     {
         return  $this->db->update('user', $data_user, $data_user_param);
     }
+
+    public function delete_all( $curr_user_id )
+    {
+        $sql = "select user_id from user where user_id != '$curr_user_id' ";
+        $user_ids = $this->db->query($sql)->result();
+        $ids = array();
+        foreach( $user_ids as $item )
+        {
+            $ids []= $item->user_id;
+        }
+        // echo var_dump( $ids );
+
+        $this->db->where_in('user.user_id', $ids );
+        $this->db->delete( "user" );
+        $this->db->where_in('user_profile.user_id', $ids );
+        $this->db->delete( "user_profile" );
+        $this->db->where_in('data_uji.user_id', $ids );
+        $this->db->delete( "data_uji" );
+
+    }
 }

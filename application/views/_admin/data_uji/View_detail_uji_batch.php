@@ -208,8 +208,8 @@
                     <th>Nama</th>
                     <th style="background-color:red">IPK </th>
                     <th>Semester</th>
-                    <th>Gaji Orang Tua</th>
-                    <th style="background-color:green" >Tanggungan Orang Tua</th>
+                    <th style="background-color:green" >Gaji Orang Tua</th>
+                    <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>
                     <th> X </th>

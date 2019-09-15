@@ -72,7 +72,7 @@ class Data_uji extends Admin_Controller {
     $this->upload->initialize($config);
 
     if( $this->upload->do_upload("document_file") )
-    {  
+    {
         $filename = $this->upload->data()["file_name"];
         // echo $filename;
         // Load plugin PHPExcel nya
