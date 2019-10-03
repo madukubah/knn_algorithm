@@ -256,7 +256,7 @@ class Data_testing extends Admin_Controller {
             return;
         }
         // echo json_encode( $min_max );
-
+        // prosedur untuk menormalisasi
         for( $i=0; $i< count( $files ); $i++ )
         {
             // echo round( $files[ $i ]->data_UKT,3)."<br>";

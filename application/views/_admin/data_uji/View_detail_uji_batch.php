@@ -206,9 +206,11 @@
                   <tr >
                     <th style="width:50px">No</th>
                     <th>Nama</th>
-                    <th style="background-color:red">IPK </th>
+                    <!-- <th style="background-color:red">IPK </th> -->
+                    <th >IPK </th>
                     <th>Semester</th>
-                    <th style="background-color:green" >Gaji Orang Tua</th>
+                    <!-- <th style="background-color:green" >Gaji Orang Tua</th> -->
+                    <th  >Gaji Orang Tua</th>
                     <th>Tanggungan Orang Tua</th>
                     <th>UKT</th>
                     <th>Label</th>

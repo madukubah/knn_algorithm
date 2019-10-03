@@ -17,8 +17,8 @@ class User_Controller extends MY_Controller
             $this->session->userdata('user_status') == 0 
         )
         {
-            redirect(site_url('/landing'));
-            // redirect(site_url('/user/login'));
+            // redirect(site_url('/landing'));
+            redirect(site_url('/user/login'));
         }
     }
 }

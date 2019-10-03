@@ -155,7 +155,7 @@ class Data_uji extends Admin_Controller {
             return;
         }
         // echo json_encode( $min_max );
-
+        // prosedur untuk menormalisasi
         for( $i=0; $i< count( $files ); $i++ )
         {
             // echo round( $files[ $i ]->data_UKT,3)."<br>";
@@ -218,7 +218,7 @@ class Data_uji extends Admin_Controller {
             return;
         }
         $DISTANCES = array();
-
+        //prosedur mencari tetangga terdekat
         for( $i=0; $i< count( $data_uji ); $i++ )
         {
             $DISTANCES = array();
@@ -227,12 +227,10 @@ class Data_uji extends Admin_Controller {
                 $dist['distance'] = $this->distance( $data_uji[ $i ], $data_testing[ $j ] );
                 $dist['data_label'] = $data_testing[ $j ]['data_label'];
                 $dist['data_name'] = $data_testing[ $j ]['data_name'];
-                // echo json_encode( $dist ).'<br>' ;
                 
                 array_push($DISTANCES , $dist) ;
             }
             sort($DISTANCES);//mengurutkan distance dari terdekat
-            // echo json_encode( $DISTANCES ).'<br>' ;
 
             $K_VALUE = $this->input->post('k_value');
             $NEIGHBOUR = array();
@@ -243,20 +241,16 @@ class Data_uji extends Admin_Controller {
                 
                 array_push( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] , $DISTANCES[ $k ]) ;
             }
-            // echo 'NEIGHBOUR'.json_encode( $NEIGHBOUR ).'<br>' ;
-            
 
-            $terbesar =  array();//mencari tetangga terbesar
+            $terbesar =  array();//mencari tetangga terbanyak
             foreach(array_keys($NEIGHBOUR) as $paramName)
             {
                 
                 if(  count( $NEIGHBOUR[ $paramName ] )  > count( $terbesar ) )
                 {
                     $terbesar = $NEIGHBOUR[ $paramName ];
-                    // echo json_encode( $terbesar ).'<br>' ;
                 }
             }
-            // echo 'terbesar'.json_encode( $terbesar ).'<br>' ;
             
             $data_uji[ $i ]['data_label'] = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
         }
@@ -416,8 +410,6 @@ class Data_uji extends Admin_Controller {
                 
                 array_push( $NEIGHBOUR[ $DISTANCES[ $k ]['data_label'] ] , $DISTANCES[ $k ]) ;
             }
-            // echo 'NEIGHBOUR'.json_encode( $NEIGHBOUR ).'<br>' ;
-            
 
             $terbesar =  array();
             foreach(array_keys($NEIGHBOUR) as $paramName)
@@ -426,10 +418,8 @@ class Data_uji extends Admin_Controller {
                 if(  count( $NEIGHBOUR[ $paramName ] )  > count( $terbesar ) )
                 {
                     $terbesar = $NEIGHBOUR[ $paramName ];
-                    // echo json_encode( $terbesar ).'<br>' ;
                 }
             }
-            // echo 'terbesar'.json_encode( $terbesar ).'<br>' ;
             $lulus = ( $NEIGHBOUR[ 1 ] )  ? count( $NEIGHBOUR[ 1 ] )  : 0;
             $sum = 0;
             $count = count( $NEIGHBOUR[ 1 ] ) ; 
@@ -437,11 +427,11 @@ class Data_uji extends Admin_Controller {
             {
                 $sum += $_length['distances'];
             }
-            $avrg = $sum / $count;
+            $avrg = $sum / $count; // perhitungan nilai jarak rata-rata
 
             
             $data_uji[ $i ]['data_label']        = $terbesar[0]['data_label'];//update nilai label (lulus / tidak lulus)
-            $data_uji[ $i ]['tetangga_terdekat'] =  $avrg;//$lulus / $K_VALUE ;// $terbesar[0]['data_name'] ."(" . $terbesar[0]['distances']  .")" ;//update nilai label (lulus / tidak lulus)
+            $data_uji[ $i ]['tetangga_terdekat'] =  $avrg;
             $data_uji[ $i ]['K_VALUE']           = $K_VALUE;
             $data_uji[ $i ]['distances']         = $DISTANCES;
             $data_uji[ $i ]['NEIGHBOURS']        = $NEIGHBOUR;
@@ -449,8 +439,7 @@ class Data_uji extends Admin_Controller {
             $data_uji_param['data_id'] = $data_uji[ $i ]['data_id'];
             $this->m_data_uji_normalized->update( $data_uji[ $i ], $data_uji_param );
         }
-        // echo json_encode( $data_uji );
-        // echo json_encode( $data_uji );return;
+        
         $data['data_uji'] = $data_uji;
 
         $data['files']  = $this->m_data_uji_normalized->rangking(  );
@@ -460,26 +449,6 @@ class Data_uji extends Admin_Controller {
         $this->load->view("_admin/_template/sidebar_menu");
             $this->load->view("_admin/data_uji/View_detail_uji_batch",$data);
         $this->load->view("_admin/_template/footer");  
-        // foreach( $data_uji  as  $ind=>$val )
-        // {   
-        //     unset( $data_uji[ $ind ]['user_profile_fullname'] );
-        // }
-        // // echo json_encode( $data_uji );
-        // if(  $this->m_data_uji_normalized->_update_batch( $data_uji ) )
-        // {
-        //     $this->session->set_flashdata('info', array(
-        //         'from' => 1,
-        //         'message' =>  'item berhasil di di uji'
-        //       ));
-        //       redirect(site_url('admin/data_uji'));
-        //       return;
-        // }else{
-        //     $this->session->set_flashdata('info', array(
-        //         'from' => 0,
-        //         'message' =>  'terjadi kesalahan saat menguji data'
-        //       ));
-        //       redirect(site_url('admin/data_uji'));
-        // }
 
   }
 
@@ -492,10 +461,8 @@ class Data_uji extends Admin_Controller {
         $value = 0;
         foreach( $attrs as $attr )
         {
-            // echo $attr." ".pow( ( $data_uji[ $attr ] - $data_testing[ $attr ] ), 2 )."<br>";
             $value+= pow( ( $data_uji[ $attr ] - $data_testing[ $attr ] ), 2 );
         }
-        // echo $value."<br>";
         return round( sqrt( $value ), 6 );
   }
 }

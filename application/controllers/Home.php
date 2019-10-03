@@ -16,23 +16,6 @@ class Home extends User_Controller {
     $this->load->helper('array');
     $this->load->library("pagination");
   }
-  // public function index() 
-  // {
-  //   if(
-  //       $this->session->userdata('user_level') == 1
-  //   )
-  //   {
-  //       redirect(site_url('/admin/home'));
-  //   }
-  //     // $data['page_name'] = "Beranda";
-    
-  //   //   $data['user'] = $this->m_user->getUser( $this->session->userdata('user_id') );
-  //   //   $data['data_uji'] = $this->m_user->getUser( $this->session->userdata('user_id') );
-  //   //   $this->load->view("_user/_template/header");
-  //   // //   $this->load->view("_user/_template/sidebar_menu");
-  //   //       // $this->load->view("_user/landing_page/View",$data);
-  //   //   $this->load->view("_user/_template/footer");  
-  // }
 
   public function index() 
   {
