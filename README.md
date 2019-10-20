@@ -1,5 +1,5 @@
 
-<b>knn_algorithm</b>
+## knn_algorithm
 
 Algoritme k-nearest neighbor (k-NN atau KNN) adalah sebuah metode untuk melakukan klasifikasi terhadap objek berdasarkan data pembelajaran yang jaraknya paling dekat dengan objek tersebut.
 
@@ -11,3 +11,37 @@ Nilai k yang terbaik untuk algoritme ini tergantung pada data; secara umumnya, n
 
 Ketepatan algoritme k-NN ini sangat dipengaruhi oleh ada atau tidaknya fitur-fitur yang tidak relevan, atau jika bobot fitur tersebut tidak setara dengan relevansinya terhadap klasifikasi. Riset terhadap algoritme ini sebagian besar membahas bagaimana memilih dan memberi bobot terhadap fitur, agar performa klasifikasi menjadi lebih baik.
 
+# Penggunaan
+1. login dengan menggunakan Username : `root`,  pass : `admin`
+
+![Screenshot](OVERVIEW/1.PNG)
+
+2. kli menu data peserta kemudian import data peserta
+![Screenshot](OVERVIEW/2.PNG)
+![Screenshot](OVERVIEW/3.PNG)
+
+3. kemudian normalisasi Data uji
+![Screenshot](OVERVIEW/4.PNG)
+
+4. klik uji data keseluruhan untuk menguji semua data
+![Screenshot](OVERVIEW/5.PNG)
+
+# hasil
+![Screenshot](OVERVIEW/6.PNG)
+
+```
+//   Kode untuk menghitung jarak euclidian
+  private function distance($data_uji, $data_testing )
+  {     
+        $attrs = array(
+            'data_semester', 'data_IPK', 'data_gaji_ortu', 'data_UKT', 'data_tanggungan'
+        );
+        $value = 0;
+        foreach( $attrs as $attr )
+        {
+            $value+= pow( ( $data_uji[ $attr ] - $data_testing[ $attr ] ), 2 );
+        }
+        return round( sqrt( $value ), 6 );
+  }
+}
+```
