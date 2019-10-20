@@ -15,3 +15,16 @@ Ketepatan algoritme k-NN ini sangat dipengaruhi oleh ada atau tidaknya fitur-fit
 1. login dengan menggunakan Username : `root`,  pass : `admin`
 
 ![Screenshot](OVERVIEW/1.PNG)
+
+2. kli menu data peserta kemudian import data peserta
+![Screenshot](OVERVIEW/2.PNG)
+![Screenshot](OVERVIEW/3.PNG)
+
+3. kemudian normalisasi Data uji
+![Screenshot](OVERVIEW/4.PNG)
+
+4. klik uji data keseluruhan untuk menguji semua data
+![Screenshot](OVERVIEW/5.PNG)
+
+# hasil
+![Screenshot](OVERVIEW/6.PNG)
