@@ -28,3 +28,20 @@ Ketepatan algoritme k-NN ini sangat dipengaruhi oleh ada atau tidaknya fitur-fit
 
 # hasil
 ![Screenshot](OVERVIEW/6.PNG)
+
+```
+//   Kode untuk menghitung jarak 
+  private function distance($data_uji, $data_testing )
+  {     
+        $attrs = array(
+            'data_semester', 'data_IPK', 'data_gaji_ortu', 'data_UKT', 'data_tanggungan'
+        );
+        $value = 0;
+        foreach( $attrs as $attr )
+        {
+            $value+= pow( ( $data_uji[ $attr ] - $data_testing[ $attr ] ), 2 );
+        }
+        return round( sqrt( $value ), 6 );
+  }
+}
+```
