@@ -30,7 +30,7 @@ Ketepatan algoritme k-NN ini sangat dipengaruhi oleh ada atau tidaknya fitur-fit
 ![Screenshot](OVERVIEW/6.PNG)
 
 ```
-//   Kode untuk menghitung jarak 
+//   Kode untuk menghitung jarak euclidian
   private function distance($data_uji, $data_testing )
   {     
         $attrs = array(
