@@ -1,5 +1,5 @@
 
-knn_algorithm
+<b>knn_algorithm</b>
 
 Algoritme k-nearest neighbor (k-NN atau KNN) adalah sebuah metode untuk melakukan klasifikasi terhadap objek berdasarkan data pembelajaran yang jaraknya paling dekat dengan objek tersebut.
 
