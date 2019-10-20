@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2019 at 11:44 PM
+-- Generation Time: Oct 20, 2019 at 05:20 AM
 -- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- PHP Version: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,15 +44,16 @@ CREATE TABLE `data_testing` (
 --
 
 INSERT INTO `data_testing` (`data_id`, `data_name`, `data_semester`, `data_IPK`, `data_gaji_ortu`, `data_UKT`, `data_tanggungan`, `data_label`) VALUES
-(89, 'A', 4, 3.9, 1000000, 2900000, 4, 1),
-(90, 'B', 3, 3.8, 1000000, 2800000, 5, 1),
-(91, 'C', 6, 3.7, 1000000, 2700000, 5, 1),
-(92, 'D', 5, 3.6, 1000000, 2600000, 3, 1),
-(93, 'E', 5, 3.5, 1000000, 2500000, 2, 1),
-(94, 'F', 5, 3.4, 2000000, 1500000, 4, 0),
-(95, 'G', 6, 3.3, 3000000, 1400000, 5, 0),
-(96, 'H', 4, 3.2, 4000000, 1300000, 7, 0),
-(97, 'I', 5, 3.1, 5000000, 1200000, 1, 0);
+(89, 'Alan ramadan', 4, 3.9, 1000000, 2900000, 4, 1),
+(90, 'Bambang', 3, 3.8, 1000000, 2800000, 5, 1),
+(91, 'Citra', 6, 3.7, 1000000, 2700000, 5, 1),
+(92, 'Danang', 5, 3.6, 1000000, 2600000, 3, 1),
+(93, 'Erling', 5, 3.5, 1000000, 2500000, 2, 1),
+(94, 'Fadli', 5, 3.4, 2000000, 1500000, 4, 0),
+(95, 'Galang', 6, 3.3, 3000000, 1400000, 5, 0),
+(96, 'Hartati', 4, 3.2, 4000000, 1300000, 7, 0),
+(97, 'armin', 5, 3.1, 5000000, 1200000, 1, 0),
+(98, 'irfan', 3, 3, 3500000, 1500000, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -76,15 +77,16 @@ CREATE TABLE `data_testing_normalized` (
 --
 
 INSERT INTO `data_testing_normalized` (`data_id`, `data_name`, `data_semester`, `data_IPK`, `data_gaji_ortu`, `data_UKT`, `data_tanggungan`, `data_label`) VALUES
-(89, 'A', 0.3333, 1, 0, 1, 0.5, 1),
-(90, 'B', 0, 0.875, 0, 0.9412, 0.6667, 1),
-(91, 'C', 1, 0.75, 0, 0.8824, 0.6667, 1),
-(92, 'D', 0.6667, 0.625, 0, 0.8235, 0.3333, 1),
-(93, 'E', 0.6667, 0.5, 0, 0.7647, 0.1667, 1),
-(94, 'F', 0.6667, 0.375, 0.25, 0.1765, 0.5, 0),
-(95, 'G', 1, 0.25, 0.5, 0.1176, 0.6667, 0),
-(96, 'H', 0.3333, 0.125, 0.75, 0.0588, 1, 0),
-(97, 'I', 0.6667, 0, 1, 0, 0, 0);
+(89, 'Alan ramadan', 0.3333, 1, 0, 1, 0.5, 1),
+(90, 'Bambang', 0, 0.8889, 0, 0.9412, 0.6667, 1),
+(91, 'Citra', 1, 0.7778, 0, 0.8824, 0.6667, 1),
+(92, 'Danang', 0.6667, 0.6667, 0, 0.8235, 0.3333, 1),
+(93, 'Erling', 0.6667, 0.5556, 0, 0.7647, 0.1667, 1),
+(94, 'Fadli', 0.6667, 0.4444, 0.25, 0.1765, 0.5, 0),
+(95, 'Galang', 1, 0.3333, 0.5, 0.1176, 0.6667, 0),
+(96, 'Hartati', 0.3333, 0.2222, 0.75, 0.0588, 1, 0),
+(97, 'armin', 0.6667, 0.1111, 1, 0, 0, 0),
+(98, 'irfan', 0, 0, 0.625, 0.1765, 0.1667, 0);
 
 -- --------------------------------------------------------
 
@@ -103,22 +105,6 @@ CREATE TABLE `data_uji` (
   `data_label` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `data_uji`
---
-
-INSERT INTO `data_uji` (`data_id`, `user_id`, `data_semester`, `data_IPK`, `data_gaji_ortu`, `data_UKT`, `data_tanggungan`, `data_label`) VALUES
-(1, 2, 4, 3.6, 1500000, 3330000, 4, -1),
-(2, 3, 3, 3, 500000, 3130000, 5, -1),
-(3, 4, 6, 3.2, 900000, 2950000, 5, -1),
-(4, 5, 5, 3, 2000000, 3100000, 3, -1),
-(5, 6, 5, 3.7, 700000, 2700000, 2, -1),
-(6, 7, 5, 2.65, 3995000, 2940000, 4, -1),
-(7, 8, 6, 2.93, 2560000, 3610000, 5, -1),
-(8, 9, 4, 2.7, 3550000, 3710000, 7, -1),
-(9, 10, 5, 2.66, 2860000, 3070000, 1, -1),
-(10, 11, 6, 3.64, 1000000, 250000, 5, -1);
-
 -- --------------------------------------------------------
 
 --
@@ -136,22 +122,6 @@ CREATE TABLE `data_uji_normalized` (
   `data_label` int(11) NOT NULL,
   `tetangga_terdekat` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_uji_normalized`
---
-
-INSERT INTO `data_uji_normalized` (`data_id`, `user_id`, `data_semester`, `data_IPK`, `data_gaji_ortu`, `data_UKT`, `data_tanggungan`, `data_label`, `tetangga_terdekat`) VALUES
-(1, 2, 0.3333, 0.625, 0.125, 1.2529, 0.5, 1, 'A(0.469264)'),
-(2, 3, 0, -0.125, -0.125, 1.1353, 0.6667, 1, 'B(1.026304)'),
-(3, 4, 1, 0.125, -0.025, 1.0294, 0.6667, 1, 'C(0.642541)'),
-(4, 5, 0.6667, -0.125, 0.25, 1.1176, 0.3333, 1, 'E(0.778087)'),
-(5, 6, 0.6667, 0.75, -0.075, 0.8824, 0.1667, 1, 'D(0.229074)'),
-(6, 7, 0.6667, -0.5625, 0.7488, 1.0235, 0.5, 0, 'I(1.295013)'),
-(7, 8, 1, -0.2125, 0.39, 1.4176, 0.6667, 1, 'C(1.168309)'),
-(8, 9, 0.3333, -0.5, 0.6375, 1.4765, 1, 1, 'D(1.629136)'),
-(9, 10, 0.6667, -0.55, 0.465, 1.1, 0, 0, 'I(1.341166)'),
-(10, 11, 1, 0.675, 0, -0.5588, 0.6667, 0, 'F(0.912164)');
 
 -- --------------------------------------------------------
 
@@ -1771,7 +1741,213 @@ INSERT INTO `log` (`log_id`, `log_datetime`, `log_message`, `user_id`) VALUES
 (1596, '2019-07-27 15:41:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
 (1597, '2019-07-27 15:41:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
 (1598, '2019-07-27 15:44:55', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
-(1599, '2019-07-27 15:45:18', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1);
+(1599, '2019-07-27 15:45:18', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1600, '0000-00-00 00:00:00', 'true', 1),
+(1601, '2019-07-29 03:45:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1602, '2019-07-29 03:45:52', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1603, '2019-07-29 03:48:23', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1604, '2019-07-29 03:48:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1605, '2019-07-29 03:48:41', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1606, '2019-07-29 03:48:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1607, '2019-07-29 03:49:08', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1608, '2019-07-29 03:49:18', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1609, '2019-07-29 03:49:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1610, '2019-07-29 03:49:58', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1611, '2019-07-29 03:50:06', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1612, '2019-07-29 03:50:16', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1613, '2019-07-29 03:50:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1614, '2019-07-29 03:50:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1615, '2019-07-29 03:53:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1616, '2019-07-29 03:53:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1617, '2019-07-29 03:53:55', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1618, '2019-07-29 03:56:20', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1619, '2019-07-29 03:56:22', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1620, '2019-07-29 03:56:44', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1621, '2019-07-29 03:56:53', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1622, '2019-07-29 03:57:06', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1623, '2019-07-29 03:57:33', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1624, '2019-07-29 03:57:41', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1625, '2019-07-29 03:57:53', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1626, '2019-07-29 03:58:00', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1627, '2019-07-29 03:58:10', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1628, '2019-07-29 03:59:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1629, '2019-07-29 03:59:44', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1630, '2019-07-29 03:59:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1631, '2019-07-29 04:00:05', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1632, '2019-07-29 04:00:23', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1633, '2019-07-29 04:00:36', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1634, '2019-07-29 04:02:02', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1635, '2019-07-29 04:02:12', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1636, '2019-07-29 04:02:25', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1637, '2019-07-29 04:02:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1638, '2019-07-29 04:02:34', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1639, '2019-07-29 04:02:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1640, '2019-07-29 04:02:50', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1641, '2019-07-29 04:14:02', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1642, '2019-07-29 04:14:05', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1643, '2019-07-29 04:14:47', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1644, '2019-07-29 04:14:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1645, '2019-07-29 04:15:06', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1646, '2019-07-29 04:18:25', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1647, '2019-07-29 05:01:26', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1648, '2019-07-29 05:02:21', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1649, '2019-07-29 05:03:25', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1650, '2019-07-29 05:30:27', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1651, '2019-07-29 05:30:33', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1652, '2019-07-29 05:41:30', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1653, '2019-07-29 05:41:33', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1654, '2019-07-29 05:43:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1655, '2019-07-29 06:18:20', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1656, '2019-07-29 06:18:22', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1657, '2019-07-29 06:18:32', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1658, '2019-07-29 06:18:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1659, '2019-07-29 06:18:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1660, '2019-07-29 06:18:50', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1661, '0000-00-00 00:00:00', 'true', 1),
+(1662, '2019-07-29 10:49:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1663, '2019-07-29 10:49:45', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1664, '2019-07-29 10:49:53', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1665, '2019-07-29 10:49:55', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1666, '2019-07-29 10:50:06', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1667, '2019-07-29 10:53:00', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1668, '2019-07-29 10:55:09', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1669, '2019-07-29 11:10:57', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1670, '2019-07-29 11:11:50', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1671, '2019-07-29 11:11:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1672, '2019-07-29 11:13:59', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1673, '2019-07-29 11:14:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1674, '2019-07-29 11:14:36', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1675, '2019-07-29 11:33:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1676, '2019-07-29 11:33:44', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1677, '2019-07-29 11:33:46', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1678, '2019-07-29 11:33:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1679, '2019-07-29 11:33:52', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1680, '2019-07-29 11:35:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1681, '2019-07-29 11:35:30', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1682, '2019-07-29 11:35:34', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1683, '2019-07-29 11:35:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1684, '2019-07-29 11:35:36', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1685, '2019-07-29 11:35:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1686, '2019-07-29 11:35:40', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1687, '2019-07-29 11:35:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1688, '2019-07-29 11:35:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1689, '0000-00-00 00:00:00', 'true', 1),
+(1690, '2019-07-30 01:39:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1691, '2019-07-30 01:39:16', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1692, '2019-07-30 01:47:34', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1693, '0000-00-00 00:00:00', 'true', 1),
+(1694, '2019-08-02 13:46:33', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1695, '2019-08-02 13:46:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1696, '2019-08-02 13:46:57', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1697, '0000-00-00 00:00:00', 'true', 1),
+(1698, '2019-08-05 03:21:40', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1699, '2019-08-05 03:21:42', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1700, '2019-08-05 03:29:15', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1701, '2019-08-05 03:29:17', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1702, '0000-00-00 00:00:00', 'true', 1),
+(1703, '2019-08-05 07:50:59', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1704, '2019-08-05 07:51:02', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1705, '2019-08-05 07:53:27', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1706, '2019-08-05 07:53:32', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1707, '0000-00-00 00:00:00', 'true', 1),
+(1708, '2019-08-07 06:57:53', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1709, '2019-08-07 06:58:04', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1710, '2019-08-07 07:13:30', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1711, '2019-08-07 07:13:35', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1712, '2019-08-07 07:13:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1713, '2019-08-07 07:16:57', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1714, '2019-08-07 07:17:02', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1715, '2019-08-07 07:19:56', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1716, '2019-08-07 07:20:17', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1717, '2019-08-07 07:23:12', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1718, '2019-08-07 07:23:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1719, '0000-00-00 00:00:00', 'true', 1),
+(1720, '2019-08-07 10:48:17', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1721, '2019-08-07 10:48:20', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1722, '0000-00-00 00:00:00', 'false =>Username atau password salah!', 0),
+(1723, '0000-00-00 00:00:00', 'true', 1),
+(1724, '2019-08-29 05:06:09', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1725, '2019-08-29 05:06:19', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1726, '2019-08-29 05:07:16', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1727, '2019-08-29 05:07:31', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1728, '0000-00-00 00:00:00', 'true', 1),
+(1729, '2019-08-29 10:32:19', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1730, '2019-08-29 10:32:21', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1731, '0000-00-00 00:00:00', 'true', 1),
+(1732, '2019-09-14 09:00:05', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1733, '2019-09-14 09:00:28', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1734, '2019-09-14 09:02:11', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1735, '0000-00-00 00:00:00', 'true', 1),
+(1736, '2019-09-15 04:27:20', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1737, '2019-09-15 04:27:23', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1738, '2019-09-15 04:28:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1739, '2019-09-15 04:43:15', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1740, '2019-09-15 04:43:27', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1741, '0000-00-00 00:00:00', 'true', 1),
+(1742, '2019-09-15 07:22:48', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1743, '2019-09-15 07:25:25', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1744, '2019-09-15 07:25:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1745, '2019-09-15 07:26:09', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1746, '2019-09-15 07:26:58', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1747, '2019-09-15 07:27:04', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1748, '2019-09-15 08:02:31', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1749, '2019-09-15 08:04:14', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1750, '2019-09-15 08:04:16', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1751, '2019-09-15 08:08:17', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1752, '2019-09-15 08:09:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1753, '2019-09-15 08:10:52', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1754, '2019-09-15 08:11:12', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1755, '2019-09-15 08:11:15', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1756, '2019-09-15 08:11:30', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1757, '2019-09-15 08:11:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1758, '2019-09-15 08:11:53', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1759, '2019-09-15 08:11:55', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1760, '2019-09-15 08:14:03', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1761, '2019-09-15 08:14:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1762, '2019-09-15 08:14:16', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1763, '2019-09-15 08:14:17', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1764, '2019-09-15 08:14:18', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1765, '0000-00-00 00:00:00', 'true', 1),
+(1766, '2019-10-02 16:51:00', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1767, '2019-10-02 17:26:34', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1768, '0000-00-00 00:00:00', 'true', 1),
+(1769, '2019-10-03 15:07:51', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1770, '2019-10-03 15:09:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1771, '2019-10-03 15:10:06', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1772, '2019-10-03 15:10:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1773, '2019-10-03 15:12:40', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1774, '2019-10-03 15:12:43', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1775, '2019-10-03 15:12:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1776, '0000-00-00 00:00:00', 'true', 1),
+(1777, '2019-10-04 07:18:04', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1778, '2019-10-04 07:18:07', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1779, '2019-10-04 07:32:34', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1780, '0000-00-00 00:00:00', 'true', 1),
+(1781, '2019-10-04 07:33:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1782, '0000-00-00 00:00:00', 'true', 1),
+(1783, '2019-10-04 07:41:32', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1784, '2019-10-04 07:41:46', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1785, '0000-00-00 00:00:00', 'true', 1),
+(1786, '2019-10-04 07:43:28', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1787, '2019-10-04 07:43:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1788, '2019-10-04 07:43:49', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1789, '2019-10-04 07:44:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1790, '2019-10-04 07:44:50', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1791, '2019-10-04 07:44:52', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1792, '2019-10-04 07:46:50', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1793, '2019-10-04 07:47:13', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1794, '2019-10-04 07:47:30', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1795, '0000-00-00 00:00:00', 'true', 1),
+(1796, '2019-10-20 05:00:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1797, '2019-10-20 05:00:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1798, '2019-10-20 05:00:41', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1799, '2019-10-20 05:06:24', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1800, '2019-10-20 05:06:29', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1801, '2019-10-20 05:06:37', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1802, '2019-10-20 05:06:47', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1803, '2019-10-20 05:09:10', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1804, '2019-10-20 05:20:07', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1),
+(1805, '2019-10-20 05:20:08', 'HOMEPAGE :  user => root( id = 1) ; result => true', 1);
 
 -- --------------------------------------------------------
 
@@ -1793,17 +1969,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_status`, `user_level`, `create_date`) VALUES
-(1, 'root', '21232f297a57a5a743894a0e4a801fc3', 1, 1, '0000-00-00'),
-(2, '1564128363', '80682016e456651af649813a1494c9a8', 1, 2, '2019-07-26'),
-(3, '1564128365', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(4, '1564128366', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(5, '1564128367', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(6, '1564128368', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(7, '1564128369', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(8, '1564128370', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(9, '1564128371', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(10, '1564128372', 'f022169f0ff89e468311257b2b05f75e', 1, 2, '2019-07-26'),
-(11, '1564234832', 'b781419b2f5389352e9c4d1feb601148', 1, 2, '2019-07-27');
+(1, 'root', '21232f297a57a5a743894a0e4a801fc3', 1, 1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1825,26 +1991,7 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`user_id`, `user_profile_fullname`, `user_profile_address`, `user_profile_image_path`, `user_profile_email`, `user_profile_phone`) VALUES
-(1, 'admin', 'jalan mutiara', '1561605417-background (2) - Copy.jpg', 'admin@admin.com', '081342989185'),
-(2, 'A', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(3, 'B', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(4, 'C', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(5, 'D', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(6, 'E', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(7, 'F', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(8, 'G', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(9, 'H', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(10, 'I', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(11, 'udin', 'atarbia', '', '', '086553246637'),
-(55, 'A', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(56, 'B', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(57, 'C', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(58, 'D', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(59, 'E', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(60, 'F', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(61, 'G', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(62, 'H', 'jln mutiara', '', 'a@gmail.com', '081342989185'),
-(63, 'I', 'jln mutiara', '', 'a@gmail.com', '081342989185');
+(1, 'admin', 'jalan mutiara', '1561605417-background (2) - Copy.jpg', 'admin@admin.com', '081342989185');
 
 --
 -- Indexes for dumped tables
@@ -1900,37 +2047,37 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `data_testing`
 --
 ALTER TABLE `data_testing`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `data_testing_normalized`
 --
 ALTER TABLE `data_testing_normalized`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `data_uji`
 --
 ALTER TABLE `data_uji`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `data_uji_normalized`
 --
 ALTER TABLE `data_uji_normalized`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1600;
+  MODIFY `log_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1806;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
